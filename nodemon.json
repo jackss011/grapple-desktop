@@ -1,0 +1,9 @@
+{
+    "ignore": [
+        "build/*",
+        "dist/*",
+        "node_modules/*",
+        ".git/*"
+    ],
+    "ext": "js jsx json sass html"
+}
