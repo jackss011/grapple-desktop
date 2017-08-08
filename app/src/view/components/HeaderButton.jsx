@@ -14,7 +14,10 @@ class HeaderButton extends React.Component {
     render() {
         return (
             <div>
-                <button className="header-button" onClick={this.clicked}>||</button>
+                <button className="header-button" onClick={this.clicked}>
+                    <i className="material-icons">more_vert</i>
+                </button>
+
                 <Popup ref="popup">
                     <PopupRow label="Sign Out" enabled={this.props.canSignOut} action={this.props.onSignOut}/>
                 </Popup>
