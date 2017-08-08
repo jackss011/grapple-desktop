@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Header from './Header'
+import ProjectsPane from './projects/ProjectsPane'
 import {connect} from 'react-redux'
 
 import ActionsGenerator from '../../redux/actions/actions-generator'
@@ -25,6 +26,7 @@ class App extends React.Component {
             <div>
                 <Header/>
                 {this.props.initializing && <div>Spinning</div>}
+                <ProjectsPane/>
             </div>
         )
     }
