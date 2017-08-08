@@ -8,7 +8,7 @@ module.exports = function(grunt) {
         copy: {
             files: {
                 cwd: 'app',
-                src: ['**/*.js', '**/*.html'],
+                src: ['**/*.js', '**/*.html', '**/*.ttf'],
                 dest: buildDir,
                 expand: true
             }

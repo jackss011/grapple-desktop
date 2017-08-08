@@ -1,9 +1,11 @@
 $accent: #0097A7
 
+@import fonts
+@import icons
+
 body
     margin: 0
-    font-family: "Arial"
-    font-size: 15
+    font-family: "Roboto"
     color: #333
     user-select: none
     cursor: default
@@ -21,6 +23,10 @@ header
         display: flex
         height: 100%
 
+
+.logo
+    font-size: 1.5em
+    letter-spacing: 0.05em
 
 
 .user-info
@@ -74,9 +80,8 @@ header
    
 
 .header-button
+    padding: 3px
     color: white
-    width: 30px
-    height: 30px
     margin: auto
     margin-left: 10px
     background: none
@@ -91,19 +96,21 @@ header
 
 
 .soft-button
-    font-size: 12 
+    display: block
+    margin: auto
+    font-size: 14px 
     color: $accent
     text-transform: uppercase
-    font-family: Arial
+    font-family: "Roboto"
     background: white
     border: none
     letter-spacing: 1px
     border-radius: 2px
-    padding: 8px 13px
+    padding: 9px 8px
     outline: none
 
     &:hover
-        background-color: rgba(white, 0.95)
+        background-color: rgba(white, 0.90)
 
 
 
