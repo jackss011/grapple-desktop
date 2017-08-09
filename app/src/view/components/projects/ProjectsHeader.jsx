@@ -4,8 +4,10 @@ import AddProjectButton from './AddProjectButton'
 class ProjectHeader extends React.Component {
     render() {
         return (
-            <AddProjectButton />
-        )
+            <div className="projects-header">
+                <AddProjectButton />
+            </div>
+        )   
     }
 }
 
