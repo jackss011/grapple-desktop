@@ -18,7 +18,7 @@ class ProjectsPane extends React.Component {
 
     projectList() {
         return Object.entries(this.props.projects).map(
-            ([uid, project]) => <ProjectRow project={project}/>
+            ([uid, project]) => <ProjectRow key={uid} project={project}/>
         )
     }
 }
