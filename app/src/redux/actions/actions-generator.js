@@ -1,6 +1,15 @@
 import ActionTypes from './action-types'
 
 const ActionsGenerator = {
+    // MISC
+    initialize: () => ({type: ActionTypes.INITIALIZE}),
+
+    windowClicked: () => ({type: ActionTypes.WINDOW_CLICK}),
+
+    showHeaderMenu: () => ({type: ActionTypes.HEADER_MENU_SHOW}),
+
+
+    // AUTH
     signIn: () => ({type: ActionTypes.SIGN_IN}),
 
     signOut: () => ({ type: ActionTypes.SIGN_OUT }),
@@ -10,11 +19,17 @@ const ActionsGenerator = {
         userInfo //TODO maybe change to user
     }),
 
-    initialize: () => ({type: ActionTypes.INITIALIZE}),
 
-    windowClicked: () => ({type: ActionTypes.WINDOW_CLICK}),
+    // PROJECTS
+    addProject: (name, description) => ({
+        type: ActionTypes.ADD_PROJECT,
+        name, description
+    }),
 
-    showHeaderMenu: () => ({type: ActionTypes.HEADER_MENU_SHOW})
+    onProjects: projects => ({
+        type: ActionTypes.ON_PROJECTS,
+        projects
+    })
 }
 
 export default ActionsGenerator
