@@ -1,17 +1,43 @@
+// react
 import React from 'react'
 import ReactDOM from 'react-dom'
+
 import App from './components/App'
 
+
+// redux
 import {createStore, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
-import logger from 'redux-logger'
-import reducer from '../redux/reducers/reducer'
+import {createLogger} from 'redux-logger'
 
+import reducer from '../redux/reducers/reducer'
+import ActionTypes from '../redux/actions/action-types'
+
+
+// account
 import Account from '../model/account'
 import accountMiddleware from '../redux/middleware/account-middleware'
-let account = new Account()
 
-const store = createStore(reducer, applyMiddleware(accountMiddleware(account), logger))
+
+// database
+import Database from '../model/database'
+import databaseMiddleware from '../redux/middleware/database-middleware'
+
+
+
+// APPLICATION
+const account = new Account()
+const database = new Database()
+
+const logger = createLogger({
+  predicate: (getState, action) => action.type !== ActionTypes.WINDOW_CLICK
+})
+
+const store = createStore(reducer, applyMiddleware(
+    accountMiddleware(account), 
+    databaseMiddleware(database), 
+    logger
+))
 
 ReactDOM.render(
     <Provider store={store}><App /></Provider>,
