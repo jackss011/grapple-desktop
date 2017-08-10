@@ -1,23 +1,61 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import ActionGenerator from '../../../redux/actions/actions-generator'
 
 class AddProjectForm extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            name: "",
+            description: ""
+        }
+    }
+
     render() {
         return (
             <form className="add-project-form" onSubmit={e => this.onSubmit(e)}>
-                <input type="text" placeholder="Name"/>
-                <input type="text" placeholder="Description"/>
+                <input 
+                    name="name" 
+                    type="text" 
+                    onChange={e => this.inputChange(e)}
+                    placeholder="Name" 
+                />
+                <input 
+                    name="description" 
+                    type="text" 
+                    onChange={e => this.inputChange(e)}
+                    placeholder="Description" 
+                />
 
                 <div>
                     <input type="submit" className="add" value="Add"/>
-                    <input type="button" className="cancel" value="Cancel"/>
+                    <input type="button" className="cancel" value="Cancel" onClick={() => this.onCancel()}/>
                 </div>
             </form>
         )
     }
 
-    onSubmit(e) {
-        console.log(e)
+    inputChange({target}) {
+        this.setState({[target.name]: target.value})
+    }
+
+    onSubmit(event) {
+        event.preventDefault()
+        this.props.onSubmit(this.state.name, this.state.description) //TODO add validation
+    }
+
+    onCancel() {
+        this.props.onCancel()
     }
 }
 
-export default AddProjectForm
+
+function mapDispatchToProps(dispatch) {
+    return {
+        onSubmit: (name, description) => dispatch(ActionGenerator.submitProject(name, description)),
+        onCancel: () => dispatch(ActionGenerator.cancelAddProject())
+    }
+}
+
+export default connect(null, mapDispatchToProps)(AddProjectForm)

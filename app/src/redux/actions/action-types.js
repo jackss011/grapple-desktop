@@ -1,16 +1,17 @@
 const ActionTypes =
 {
-    INITIALIZE:             'at_initialize',
-    WINDOW_CLICK:           'at_window_click',
-    HEADER_MENU_SHOW:       'at_header_menu_show',
+    INITIALIZE:             'INITIALIZE',
+    WINDOW_CLICK:           'WINDOW_CLICK',
+    HEADER_MENU_SHOW:       'HEADER_MENU_SHOW',
 
-    SIGN_IN:                'at_sign_in',
-    SIGN_OUT:               'at_sign_out',
-    AUTH_STATE_CHANGED:     'at_auth_state_changed',
+    SIGN_IN:                'SIGN_IN',
+    SIGN_OUT:               'SIGN_OUT',
+    AUTH_STATE_CHANGED:     'AUTH_STATE_CHANGED',
 
-    ADD_PROJECT:            'at_add_project',
-    SUBMIT_PROJECT:         'at_submit_project',
-    ON_PROJECTS:            'at_on_projects',
+    ADD_PROJECT:            'ADD_PROJECT',
+    CANCEL_ADD_PROJECT:     'CANCEL_ADD_PROJECT',
+    SUBMIT_PROJECT:         'SUBMIT_PROJECT',
+    ON_PROJECTS:            'ON_PROJECTS',
 }
 
 export default ActionTypes

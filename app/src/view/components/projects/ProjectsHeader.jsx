@@ -3,12 +3,16 @@ import {connect} from 'react-redux'
 import ActionGenerator from '../../../redux/actions/actions-generator'
 
 import AddProjectButton from './AddProjectButton'
+import AddProjectForm from './AddProjectForm'
 
 class ProjectHeader extends React.Component {
     render() {
         return (
             <div className="projects-header">
-                <AddProjectButton/>
+                {!this.props.adding 
+                    ? <AddProjectButton/> 
+                    : <AddProjectForm/>
+                } 
             </div>
         )   
     }

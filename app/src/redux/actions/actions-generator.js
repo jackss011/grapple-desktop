@@ -23,6 +23,8 @@ const ActionsGenerator = {
     // PROJECTS
     addProject: () => ({ type: ActionTypes.ADD_PROJECT }),
 
+    cancelAddProject: () => ({ type: ActionTypes.CANCEL_ADD_PROJECT }),
+
     submitProject: (name, description) => ({
         type: ActionTypes.SUBMIT_PROJECT,
         name, description
