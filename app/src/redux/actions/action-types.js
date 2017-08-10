@@ -9,6 +9,7 @@ const ActionTypes =
     AUTH_STATE_CHANGED:     'at_auth_state_changed',
 
     ADD_PROJECT:            'at_add_project',
+    SUBMIT_PROJECT:         'at_submit_project',
     ON_PROJECTS:            'at_on_projects',
 }
 

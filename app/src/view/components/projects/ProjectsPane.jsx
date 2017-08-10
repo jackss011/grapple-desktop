@@ -17,6 +17,8 @@ class ProjectsPane extends React.Component {
     }
 
     projectList() {
+        if(this.props.projects == null) return;
+
         return Object.entries(this.props.projects).map(
             ([uid, project]) => <ProjectRow key={uid} project={project}/>
         )
@@ -25,7 +27,7 @@ class ProjectsPane extends React.Component {
 
 function mapStateToProps({projects}) {
     return {
-        projects
+        projects: projects.list
     }
 }
 

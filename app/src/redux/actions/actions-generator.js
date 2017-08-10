@@ -21,8 +21,10 @@ const ActionsGenerator = {
 
 
     // PROJECTS
-    addProject: (name, description) => ({
-        type: ActionTypes.ADD_PROJECT,
+    addProject: () => ({ type: ActionTypes.ADD_PROJECT }),
+
+    submitProject: (name, description) => ({
+        type: ActionTypes.SUBMIT_PROJECT,
         name, description
     }),
 
