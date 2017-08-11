@@ -5,6 +5,8 @@ class Database {
     constructor() {
         this._onProjects = null
         this._uidCache = null
+
+        this.submitProject = this.submitProject.bind(this)
     }
 
     initialize() {
@@ -23,22 +25,29 @@ class Database {
         })
     }
 
-    get onProjects() { return this._onProjects }
+    get uid() { return firebase.auth().currentUser.uid }
 
+    get uidCache() { return this._uidCache}
+
+    get hasUser() { return firebase.auth().currentUser != null }
+
+    ref(path) { return firebase.database().ref(`users/${this.uidCache}/${path}`) }
+
+    
+    // PROJECTS
+
+    get onProjects() { return this._onProjects }
+    
     set onProjects(callback) {
         if(callback && typeof callback !== 'function') throw 'callback must be a function'
         this._onProjects = callback
     }
 
-    get uid() { return firebase.auth().currentUser.uid }
-
-    get uidCache() { return this._uidCache}
-
-    ref(path) { return firebase.database().ref(`users/${this.uidCache}/${path}`) }
-
-    addProject(name, description) {
-        // firebase.database().ref(`users/${this.uid}/projects`)
-        //     .push().set({name, description})
+    submitProject(name, description) {
+        if(this.hasUser) {
+            firebase.database().ref(`users/${this.uid}/projects`)
+                .push().set({name, description})
+        }
     }
 }
 

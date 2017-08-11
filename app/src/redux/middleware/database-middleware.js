@@ -13,6 +13,10 @@ export default database => {
                 case ActionTypes.INITIALIZE:
                     database.initialize()
                     break
+
+                case ActionTypes.SUBMIT_PROJECT:
+                    database.submitProject(action.name, action.description)
+                    break
             }
 
             return next(action)
