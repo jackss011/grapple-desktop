@@ -17,13 +17,15 @@ class AddProjectForm extends React.Component {
             <form className="add-project-form" onSubmit={e => this.onSubmit(e)}>
                 <input 
                     name="name" 
-                    type="text" 
+                    type="text"
+                    ref={input => this.nameInput = input}
                     onChange={e => this.inputChange(e)}
                     placeholder="Name" 
                 />
                 <input 
                     name="description" 
-                    type="text" 
+                    type="text"
+                    ref={input => this.descriptionInput = input}
                     onChange={e => this.inputChange(e)}
                     placeholder="Description" 
                 />
@@ -43,13 +45,19 @@ class AddProjectForm extends React.Component {
     onSubmit(event) {
         event.preventDefault()
         this.props.onSubmit(this.state.name, this.state.description) //TODO add validation
+        resetInputs()
     }
 
     onCancel() {
         this.props.onCancel()
+        resetInputs()
+    }
+
+    resetInputs() {
+        this.refs.nameInput.value = ""
+        this.refs.descriptionInput.value = ""
     }
 }
-
 
 function mapDispatchToProps(dispatch) {
     return {

@@ -16,6 +16,9 @@ export default function(state = initState, action) {
         case ActionTypes.CANCEL_ADD_PROJECT:
             return Object.assign({}, state, {adding: false})
 
+        case ActionTypes.SUBMIT_PROJECT:
+            return Object.assign({}, state, {adding: false})
+
         default:
             return state
     }
