@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 
 import ProjectsHeader from './ProjectsHeader'
 import ProjectRow from './ProjectRow'
+import ProjectsSpinner from './ProjectsSpinner'
 
 
 class ProjectsPane extends React.Component {
@@ -12,6 +13,7 @@ class ProjectsPane extends React.Component {
                 <ProjectsHeader />
                 <hr/>
                 {this.projectList()}
+                {this.props.initial_loading && <ProjectsSpinner/>}
             </div>
         )
     }
@@ -27,7 +29,8 @@ class ProjectsPane extends React.Component {
 
 function mapStateToProps({projects}) {
     return {
-        projects: projects.list
+        projects: projects.list,
+        initial_loading: projects.initial_loading
     }
 }
 
