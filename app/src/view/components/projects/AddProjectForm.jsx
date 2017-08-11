@@ -45,17 +45,17 @@ class AddProjectForm extends React.Component {
     onSubmit(event) {
         event.preventDefault()
         this.props.onSubmit(this.state.name, this.state.description) //TODO add validation
-        resetInputs()
+        this.resetInputs()
     }
 
     onCancel() {
         this.props.onCancel()
-        resetInputs()
+        this.resetInputs()
     }
 
     resetInputs() {
-        this.refs.nameInput.value = ""
-        this.refs.descriptionInput.value = ""
+        this.nameInput.value = ""
+        this.descriptionInput.value = ""
     }
 }
 
