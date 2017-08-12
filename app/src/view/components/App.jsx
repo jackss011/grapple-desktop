@@ -25,12 +25,14 @@ class App extends React.Component {
         return (
             <div>
                 <Header/>
-                {this.props.initializing 
-                    ? <div>Spinning</div> 
-                    : (
-                        <ProjectsPane/>
-                    )
-                }
+                <div className="content">
+                    {this.props.initializing 
+                        ? <div>Spinning</div> 
+                        : (
+                            <ProjectsPane/>
+                        )
+                    }
+                </div>
                 
             </div>
         )
