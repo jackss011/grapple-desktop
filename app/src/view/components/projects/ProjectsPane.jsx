@@ -12,7 +12,10 @@ class ProjectsPane extends React.Component {
             <div className="projects-pane">
                 <ProjectsHeader />
                 <hr/>
-                {this.projectList()}
+                <div className="projects-list">
+                    {this.projectList()}
+                </div>
+            
                 {this.props.initial_loading && <ProjectsSpinner/>}
             </div>
         )
