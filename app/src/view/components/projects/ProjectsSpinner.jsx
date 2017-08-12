@@ -6,7 +6,7 @@ class ProjectsSpinner extends React.Component {
             <div className="project-spinner">
                 <div className="animated-spinner" />
                 <div className="loading-projects"> 
-                    Loading projects...
+                    Loading Projects
                 </div>
             </div>
         )
