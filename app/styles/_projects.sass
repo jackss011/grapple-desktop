@@ -1,28 +1,17 @@
 
 .projects-pane
     width: 300px
-    height: 100%
     border-right: 1px solid #ccc
 
 
 .projects-header
     padding: 5px 10px
 
-
-$button-color: #4CAF50
-
 .add-project
-    padding: 6px 10px
-    font-family: Roboto
-    border-radius: 2px
-    font-size: 0.9em
-    background-color: $button-color
-    color: white
-    border: none
-    outline: none
+    +concrete-button(#4CAF50)
 
-    &:hover
-        background-color: lighten($button-color, 5)
+.cancel-project
+    +ethereal-button(#cb2431)
 
 
 .project-row
@@ -52,3 +41,16 @@ $button-color: #4CAF50
 
     .animated-spinner
         margin-right: 12px
+
+
+.add-project-form
+    padding: 8px
+
+    input[type="text"]
+        margin-bottom: 8px
+
+    div
+        display: flex
+
+    .add-project
+        margin-right: 10px

@@ -31,8 +31,8 @@ class AddProjectForm extends React.Component {
                 />
 
                 <div>
-                    <input type="submit" className="add" value="Add"/>
-                    <input type="button" className="cancel" value="Cancel" onClick={() => this.onCancel()}/>
+                    <input type="submit" className="add-project" value="Add"/>
+                    <input type="button" className="cancel-project" value="Cancel" onClick={() => this.onCancel()}/>
                 </div>
             </form>
         )

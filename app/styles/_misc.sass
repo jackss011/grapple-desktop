@@ -85,3 +85,47 @@
     100%
         transform: rotate(360deg)
 
+
+=base-button
+    height: 30px
+    padding-left: 10px
+    padding-right: 10px
+    font-family: Roboto
+    border-radius: 2px
+    font-size: 0.9em
+
+
+=concrete-button($color)
+    +base-button
+    background-color: $color
+    color: white
+    border: none
+    
+    &:hover
+        background-color: lighten($color, 5)
+
+=ethereal-button($color)
+    +base-button
+    background-color: transparent
+    color: $color
+    border: 2px solid $color
+    box-sizing: border-box
+    border-radius: 0.2em
+
+    &:hover
+        background-color: rgba(black, 0.05)
+
+input
+    background-color: white
+    outline: none
+    padding: 5px
+    border-radius: 3px
+    border: 1px solid #bbb
+    margin: 0
+    color: #444
+    font-family: Roboto
+    font-size: 0.95em
+
+    
+
+
