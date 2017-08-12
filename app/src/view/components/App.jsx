@@ -25,8 +25,13 @@ class App extends React.Component {
         return (
             <div>
                 <Header/>
-                {this.props.initializing && <div>Spinning</div>}
-                <ProjectsPane/>
+                {this.props.initializing 
+                    ? <div>Spinning</div> 
+                    : (
+                        <ProjectsPane/>
+                    )
+                }
+                
             </div>
         )
     }
