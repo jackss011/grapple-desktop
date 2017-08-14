@@ -129,11 +129,12 @@ input
     background: rgba(0, 0, 0, 0.12)
 
 
+
+// INIT
+
 .init-spinner
     padding: 20px 50px
-    display: flex
-    justify-content: left
-    align-items: center
+    +flex(left, center)
     flex-grow: 1
     align-self: center
 
@@ -156,3 +157,15 @@ input
     
 
 
+// SIGN IN REQUIRED
+
+.sign-in-required
+    flex-grow: 1
+    align-self: stretch
+    +flex(center, stretch)
+
+    div 
+        margin: auto
+        color: #999
+        font-size: 0.9em
+        
