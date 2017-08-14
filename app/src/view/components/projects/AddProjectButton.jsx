@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import ActionGenerator from '../../../redux/actions/actions-generator'
+import ActionGenerator from '~/redux/actions/actions-generator'
 
 
 class AddProjectButton extends React.Component {

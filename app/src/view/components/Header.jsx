@@ -3,7 +3,7 @@ import UserInfo from './UserInfo'
 import HeaderButton from './HeaderButton'
 import SoftButton from './SoftButton'
 import {connect} from 'react-redux'
-import ActionsGenerator from '../../redux/actions/actions-generator'
+import ActionsGenerator from '~/redux/actions/actions-generator'
 
 
 class Header extends React.Component {

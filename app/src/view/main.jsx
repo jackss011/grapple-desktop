@@ -20,8 +20,8 @@ import accountMiddleware from '../redux/middleware/account-middleware'
 
 
 // database
-import Database from '../model/database'
-import databaseMiddleware from '../redux/middleware/database-middleware'
+import Database from '~/model/database'
+import databaseMiddleware from '~/redux/middleware/database-middleware'
 
 
 

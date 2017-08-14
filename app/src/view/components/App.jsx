@@ -1,18 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Header from './Header'
-import ProjectsPane from './projects/ProjectsPane'
 import {connect} from 'react-redux'
-
-import ActionsGenerator from '../../redux/actions/actions-generator'
-
 import $ from 'jquery'
 
-class App extends React.Component {
-    constructor(props) {
-        super(props)
-    }
+import ProjectsPane from './projects/ProjectsPane'
+import ActionsGenerator from '~/redux/actions/actions-generator'
 
+
+class App extends React.Component {
     componentWillMount() {
         this.props.onInit()
     }
