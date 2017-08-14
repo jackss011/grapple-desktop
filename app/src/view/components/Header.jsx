@@ -1,7 +1,6 @@
 import React from 'react'
 import UserInfo from './UserInfo'
 import HeaderButton from './HeaderButton'
-import SoftButton from './SoftButton'
 import {connect} from 'react-redux'
 import ActionsGenerator from '~/redux/actions/actions-generator'
 
@@ -14,7 +13,7 @@ class Header extends React.Component {
                 <div>
                     {this.props.ready ?
                         (this.props.needsLogin ?
-                        <SoftButton action={this.props.onSignIn}>Sign In</SoftButton> :
+                        <button className="sing-in" onClick={this.props.onSignIn}>Sign In with Google</button>:
                         <UserInfo/>) 
                     : null}
                     <HeaderButton />
