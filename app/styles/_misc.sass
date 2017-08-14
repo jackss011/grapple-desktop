@@ -31,24 +31,6 @@
         color: #999
 
 
-.soft-button
-    display: block
-    margin: auto
-    font-size: 14px 
-    color: $accent
-    text-transform: uppercase
-    font-family: "Roboto"
-    background: white
-    border: none
-    letter-spacing: 1px
-    border-radius: 2px
-    padding: 9px 8px
-    outline: none
-
-    &:hover
-        background-color: rgba(white, 0.90)
-
-
 // SPINNERS
 
 =spinner-settings($size, $width)
@@ -86,12 +68,6 @@
         transform: rotate(360deg)
 
 
-
-.project-spinner
-    .animated-spinner
-        +animated-spinner()
-
-
 // BUTTONS
 
 =base-button
@@ -101,6 +77,7 @@
     font-family: Roboto
     border-radius: 2px
     font-size: 0.9em
+    outline: none
 
 
 =concrete-button($color)

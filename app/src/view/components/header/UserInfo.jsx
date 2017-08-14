@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import Popup from './Popup'
 
 class UserInfo extends React.Component {
     render() {

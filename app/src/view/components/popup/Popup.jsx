@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+
 class Popup extends React.Component {
 
     render() {
@@ -15,10 +16,4 @@ class Popup extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        visible: state.headerMenu
-    }
-}
-
-export default connect(mapStateToProps, null)(Popup)
+export default Popup

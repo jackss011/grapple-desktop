@@ -13,7 +13,14 @@ module.exports = class LoginWindow {
     }
 
     show() {
-        this.window = new BrowserWindow({width: 350, height: 500, parent: this.parent, modal: true, title: "Sign in"})
+        this.window = new BrowserWindow({
+            width: 350, 
+            height: 500, 
+            parent: this.parent, 
+            modal: true, 
+            title: "Sign in"
+        })
+        
         //this.window.webContents.openDevTools()
         this.window.setMenu(null)
         this.window.on('closed', () => this.window = null)
@@ -48,5 +55,4 @@ module.exports = class LoginWindow {
             this.tokenCallback(token)
         }
     }
-
 }

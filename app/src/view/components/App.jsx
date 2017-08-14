@@ -1,11 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Header from './Header'
 import {connect} from 'react-redux'
 import $ from 'jquery'
 
+import Header from './header/Header'
 import InitSpinner from './InitSpinner'
 import ProjectsPane from './projects/ProjectsPane'
+
 import ActionsGenerator from '~/redux/actions/actions-generator'
 
 
