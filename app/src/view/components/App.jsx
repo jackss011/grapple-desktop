@@ -4,6 +4,7 @@ import Header from './Header'
 import {connect} from 'react-redux'
 import $ from 'jquery'
 
+import InitSpinner from './InitSpinner'
 import ProjectsPane from './projects/ProjectsPane'
 import ActionsGenerator from '~/redux/actions/actions-generator'
 
@@ -23,7 +24,7 @@ class App extends React.Component {
                 <Header/>
                 <div className="content">
                     {this.props.initializing 
-                        ? <div>Spinning</div> 
+                        ? <InitSpinner/>
                         : (
                             <ProjectsPane/>
                         )

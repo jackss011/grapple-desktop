@@ -6,4 +6,4 @@ class SoftButton extends React.Component {
     }
 }
 
-export default SoftButton
+export default SoftButton //TODO remove this class
