@@ -14,9 +14,11 @@ export default account => {
                 case ActionTypes.INITIALIZE:
                     account.initialize()
                     break
+
                 case ActionTypes.SIGN_IN:
                     account.showLoginPopup()
                     break
+                    
                 case ActionTypes.SIGN_OUT:
                     account.signOut()
                     break

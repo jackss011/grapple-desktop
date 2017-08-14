@@ -8,7 +8,7 @@ class Account {
 
         ipcRenderer.on('login-popup-token', (event, token) => {
             if(token) {
-                this.signInWithToken(token) //TODO this is bad
+                this.signInWithToken(token) //TODO add error callback
             }
         })
     }
