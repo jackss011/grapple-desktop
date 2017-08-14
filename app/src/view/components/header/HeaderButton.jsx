@@ -1,9 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import ActionGenerator from '~/redux/actions/actions-generator'
 import Popup from '../popup/Popup'
 import PopupRow from '../popup/PopupRow'
+
+import ActionGenerator from '~/redux/actions/actions-generator'
 
 
 class HeaderButton extends React.Component {

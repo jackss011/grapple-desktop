@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 
 import UserInfo from './UserInfo'
 import HeaderButton from './HeaderButton'
+
 import ActionsGenerator from '~/redux/actions/actions-generator'
 
 

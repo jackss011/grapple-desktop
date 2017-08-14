@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+
 class Popup extends React.Component {
 
     render() {
