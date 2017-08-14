@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import ActionGenerator from '~/redux/actions/actions-generator'
-import Popup from './Popup'
-import PopupRow from './PopupRow'
+import Popup from './popup/Popup'
+import PopupRow from './popup/PopupRow'
 
 
 class HeaderButton extends React.Component {
@@ -18,7 +18,7 @@ class HeaderButton extends React.Component {
                     <i className="material-icons">more_vert</i>
                 </button>
 
-                <Popup ref="popup">
+                <Popup visible={this.props.headerMenuVisible}>
                     <PopupRow label="Sign Out" enabled={this.props.canSignOut} action={this.props.onSignOut}/>
                 </Popup>
             </div>
@@ -33,7 +33,8 @@ class HeaderButton extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        canSignOut: state.user != null
+        canSignOut: state.user != null,
+        headerMenuVisible: state.headerMenu
     }
 }
 
