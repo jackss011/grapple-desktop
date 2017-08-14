@@ -1,7 +1,8 @@
 import React from 'react'
+import {connect} from 'react-redux'
+
 import UserInfo from './UserInfo'
 import HeaderButton from './HeaderButton'
-import {connect} from 'react-redux'
 import ActionsGenerator from '~/redux/actions/actions-generator'
 
 
