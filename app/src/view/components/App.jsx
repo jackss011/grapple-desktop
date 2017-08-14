@@ -6,6 +6,7 @@ import $ from 'jquery'
 import Header from './header/Header'
 import InitSpinner from './InitSpinner'
 import ProjectsPane from './projects/ProjectsPane'
+import SignInRequired from './generic/SignInRequired'
 
 import ActionsGenerator from '~/redux/actions/actions-generator'
 
@@ -27,7 +28,9 @@ class App extends React.Component {
                     {this.props.initializing 
                         ? <InitSpinner/>
                         : (
-                            <ProjectsPane/>
+                            this.props.isLogged ? 
+                            <ProjectsPane/> : 
+                            <SignInRequired/>
                         )
                     }
                 </div>
@@ -39,7 +42,8 @@ class App extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        initializing: state.initializing
+        initializing: state.initializing,
+        isLogged: state.user != null
     }
 }
 

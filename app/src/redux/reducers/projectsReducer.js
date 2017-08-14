@@ -23,6 +23,10 @@ export default function(state = initState, action) {
         case ActionTypes.SUBMIT_PROJECT:
             return Object.assign({}, state, {adding: false})
 
+        case ActionTypes.AUTH_STATE_CHANGED:
+            if(action.userInfo == null)
+                return initState
+
         default:
             return state
     }
