@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import AddProjectButton from './AddProjectButton'
-import AddProjectForm from './AddProjectForm'
+import AddProjectButton from '../AddProjectButton'
+import AddProjectForm from '../AddProjectForm'
 
 import ActionGenerator from '~/redux/actions/actions-generator'
 
