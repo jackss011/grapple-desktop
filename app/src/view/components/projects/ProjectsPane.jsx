@@ -1,19 +1,34 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
-import ProjectsHeader from './list/ProjectsHeader'
+
+import ProjectsBottom from './ProjectsBottom'
 import ProjectList from './list/ProjectList'
+import ProjectDetails from './details/ProjectDetails'
 
 
 class ProjectsPane extends React.Component {
     render() {
         return (
             <div className="projects-pane">
-                <ProjectsHeader />
-                <hr/>
-                <ProjectList />
+                {this.props.hasSelected
+                    ? <ProjectDetails/>
+                    : <ProjectList/>}
+                <ProjectsBottom/>
             </div>
         )
     }
 }
 
-export default ProjectsPane
+
+function mapStateToProps(state) {
+    return {
+        hasSelected: state.projects.selected != null
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectsPane)

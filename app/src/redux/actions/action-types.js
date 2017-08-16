@@ -12,6 +12,7 @@ const ActionTypes =
     CANCEL_ADD_PROJECT:     'CANCEL_ADD_PROJECT',
     SUBMIT_PROJECT:         'SUBMIT_PROJECT',
     ON_PROJECTS:            'ON_PROJECTS',
+    SELECT_PROJECT:        'SELECT_PROJECT'
 }
 
 export default ActionTypes

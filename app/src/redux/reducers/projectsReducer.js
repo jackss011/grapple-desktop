@@ -3,7 +3,8 @@ import ActionTypes from '../actions/action-types'
 const initState = {
     projects: null,
     adding: false,
-    initial_loading: true
+    initial_loading: true,
+    selected: null
 }
 
 export default function(state = initState, action) {
@@ -22,6 +23,9 @@ export default function(state = initState, action) {
 
         case ActionTypes.SUBMIT_PROJECT:
             return Object.assign({}, state, {adding: false})
+        
+        case ActionTypes.SELECT_PROJECT:
+            return Object.assign({}, state, {selected: action.uid})
 
         case ActionTypes.AUTH_STATE_CHANGED:
             if(action.userInfo == null)

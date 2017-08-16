@@ -33,6 +33,11 @@ const ActionsGenerator = {
     onProjects: projects => ({
         type: ActionTypes.ON_PROJECTS,
         projects
+    }),
+
+    selectProject: uid => ({
+        type: ActionTypes.SELECT_PROJECT,
+        uid
     })
 }
 
