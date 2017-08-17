@@ -14,7 +14,9 @@ class ProjectList extends React.Component {
             <div className="projects-list">
                 <ProjectListHeader/>
                 <hr/>
-                {this.createList()}
+                <div className="list">
+                    {this.createList()}
+                </div>
                 {this.props.initial_loading && <ProjectsSpinner/>}
             </div>
         )

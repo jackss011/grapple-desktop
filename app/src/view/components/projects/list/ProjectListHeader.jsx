@@ -1,5 +1,4 @@
 import React from 'react'
-import {connect} from 'react-redux'
 
 import AddProjectButton from '../AddProjectButton'
 import AddProjectForm from '../AddProjectForm'
@@ -7,23 +6,14 @@ import AddProjectForm from '../AddProjectForm'
 import ActionGenerator from '~/redux/actions/actions-generator'
 
 
-class ProjectHeader extends React.Component {
+class ProjectListHeader extends React.Component {
     render() {
         return (
             <div className="projects-header">
-                {!this.props.adding 
-                    ? <AddProjectButton/> 
-                    : <AddProjectForm/>
-                } 
+                <h1>Select a project</h1>
             </div>
         )   
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        adding: state.projects.adding
-    }
-}
-
-export default connect(mapStateToProps)(ProjectHeader)
+export default ProjectListHeader
