@@ -1,0 +1,38 @@
+// INIT
+
+.init-spinner
+    padding: 20px 50px
+    +flex(left, center)
+    flex-grow: 1
+    align-self: center
+
+    background-color: #f5f5f5
+    border: 2px solid #eee
+    border-right: none
+    border-left: none
+
+
+    .animated-spinner
+        margin-right: 22px
+        +animated-spinner(30px)
+
+        &:after
+            background-color: #cdcdcd
+
+
+    .init-label
+        font-size: 23px
+    
+
+
+// SIGN IN REQUIRED
+
+.sign-in-required
+    flex-grow: 1
+    align-self: stretch
+    +flex(center, stretch)
+
+    div 
+        margin: auto
+        color: #999
+        font-size: 0.9em
