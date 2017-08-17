@@ -11,9 +11,12 @@ class ProjectsPane extends React.Component {
     render() {
         return (
             <div className="projects-pane">
-                {this.props.hasSelected
-                    ? <ProjectDetails/>
-                    : <ProjectList/>}
+                <div className="inside">
+                    {this.props.hasSelected && <ProjectDetails/>}
+                    {(this.props.isSelecting || !this.props.hasSelected)
+                        && <ProjectList/>
+                    }
+                </div>
                 <ProjectsBottom/>
             </div>
         )
@@ -21,9 +24,10 @@ class ProjectsPane extends React.Component {
 }
 
 
-function mapStateToProps(state) {
+function mapStateToProps({projects}) {
     return {
-        hasSelected: state.projects.selected != null
+        hasSelected: projects.selected != null,
+        isSelecting: projects.is_selecting
     }
 }
 

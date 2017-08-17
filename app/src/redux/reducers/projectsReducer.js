@@ -4,7 +4,8 @@ const initState = {
     projects: null,
     adding: false,
     initial_loading: true,
-    selected: null
+    selected: null,
+    is_selecting: false
 }
 
 export default function(state = initState, action) {
@@ -26,6 +27,12 @@ export default function(state = initState, action) {
         
         case ActionTypes.SELECT_PROJECT:
             return Object.assign({}, state, {selected: action.uid})
+
+        case ActionTypes.SHOW_PROJECT_SELECTION:
+            return Object.assign({}, state, {is_selecting: true})
+
+        case ActionTypes.HIDE_PROJECT_SELECTION:
+            return Object.assign({}, state, {is_selecting: false})
 
         case ActionTypes.AUTH_STATE_CHANGED:
             if(action.userInfo == null)
