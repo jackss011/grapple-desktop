@@ -1,10 +1,18 @@
 
 .projects-pane
-    width: 300px
-    border-right: 1px solid #ccc
-    overflow: hidden
     display: flex
     flex-direction: column
+    width: 300px
+    border-right: $border-base
+    overflow: hidden
+ 
+    .inside
+        +flex(flex-start, stretch, column)
+        flex-grow: 1
+
+        & > *:nth-child(2)
+            border-top: $border-base
+
 
 .projects-list
     flex-grow: 1
@@ -38,6 +46,7 @@
         color: #aaa
         font-size: 0.8em
 
+
 .project-spinner
     +flex(left, center)
     padding: 10px 20px
@@ -63,3 +72,19 @@
     .add-project
         margin-right: 10px
 
+
+.projects-bottom
+    +flex(space-between, center)
+    flex-shrink: 0
+    border-top: $border-base
+    padding: 5px 10px
+
+    .select
+        +sneaky-button(#2196F3)
+
+    .add
+        +sneaky-button(#00C853)
+
+
+.project-details
+    
