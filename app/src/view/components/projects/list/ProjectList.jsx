@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 
 import ProjectsSpinner from '../ProjectsSpinner'
 import ProjectRow from './ProjectRow'
+import ProjectListHeader from './ProjectListHeader'
 
 import ActionsGenerator from '~/redux/actions/actions-generator'
 
@@ -11,6 +12,8 @@ class ProjectList extends React.Component {
     render() {
         return (
             <div className="projects-list">
+                <ProjectListHeader/>
+                <hr/>
                 {this.createList()}
                 {this.props.initial_loading && <ProjectsSpinner/>}
             </div>
