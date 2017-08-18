@@ -3,7 +3,7 @@
     display: flex
     flex-direction: column
     width: 300px
-    border-right: $border-base
+    border-right: $border-heavy
     overflow: hidden
  
     &>.inside
@@ -11,12 +11,13 @@
         flex-grow: 1
 
         & > *:nth-child(2)
-            border-top: $border-base
+            border-top: $border-heavy
 
 
 .projects-list
     +flex(flex-start, stretch, column)
     flex-grow: 1
+    background-color: #fcfcfc
 
     .list
         +flex(flex-start, stretch, column)
@@ -31,7 +32,8 @@
 
 .projects-header
     padding: 5px 10px
-    margin-bottom: 3px
+    padding-bottom: 8px
+    background-color: white
 
 
 .add-project
@@ -44,9 +46,8 @@
 
 
 .project-row
+    @extend .card
     padding: 15px
-    font-family: Roboto
-    border-bottom: 1px solid #ccc
     font-size: 1.2rem
     
     .name
@@ -97,6 +98,7 @@
 
 .project-details
     padding: 13px 15px
+    background-color: white
 
     .name
         font-size: 1.3rem
