@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import MissingLabel from '../../generic/MissingLabel'
 import ProjectsSpinner from '../ProjectsSpinner'
 import ProjectRow from './ProjectRow'
 import ProjectListHeader from './ProjectListHeader'
@@ -14,16 +15,21 @@ class ProjectList extends React.Component {
             <div className="projects-list">
                 <ProjectListHeader/>
                 <hr/>
-                <div className="list">
-                    {this.createList()}
-                </div>
-                {this.props.initial_loading && <ProjectsSpinner/>}
+                
+                {this.props.initial_loading 
+                    ? <ProjectsSpinner/> 
+                    : 
+                    <div className="list">
+                        {this.createList()}
+                    </div>
+                }
             </div>
         )
     }
 
     createList() {
-        if(this.props.projects == null) return;
+        if(this.props.projects == null) 
+            return <MissingLabel>No projects</MissingLabel>;
 
         return Object.entries(this.props.projects).map(
             ([uid, project]) => (
@@ -36,7 +42,7 @@ class ProjectList extends React.Component {
             )
         )
     }
-
+ 
     selectProject(uid) {
         this.props.onSelect(uid)
     }
