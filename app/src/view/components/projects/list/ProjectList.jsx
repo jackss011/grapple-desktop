@@ -38,6 +38,7 @@ class ProjectList extends React.Component {
                     uid={uid}
                     project={project} 
                     onClick={() => this.selectProject(uid)}
+                    isSelected={this.props.selected === uid}
                 />
             )
         )
@@ -51,7 +52,8 @@ class ProjectList extends React.Component {
 function mapStateToProps({projects}) {
     return {
         projects: projects.list,
-        initial_loading: projects.initial_loading
+        initial_loading: projects.initial_loading,
+        selected: projects.selected
     }
 }
 
