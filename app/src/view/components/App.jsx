@@ -6,7 +6,7 @@ import $ from 'jquery'
 import Header from './header/Header'
 import InitSpinner from './InitSpinner'
 import ProjectsPane from './projects/ProjectsPane'
-import SignInRequired from './generic/SignInRequired'
+import MissingLabel from './generic/MissingLabel'
 
 import ActionsGenerator from '~/redux/actions/actions-generator'
 
@@ -30,7 +30,7 @@ class App extends React.Component {
                         : (
                             this.props.isLogged ? 
                             <ProjectsPane/> : 
-                            <SignInRequired/>
+                            <MissingLabel>Sign in to see something!</MissingLabel>
                         )
                     }
                 </div>
