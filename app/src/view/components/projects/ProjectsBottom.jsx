@@ -8,14 +8,17 @@ class ProjectsBottom extends React.Component {
     render() {
         return (
             <div className="projects-bottom">
-                <button className="select" 
-                    onClick={() => !this.props.isSelecting 
-                        ? this.props.onSelect()
-                        : this.props.onHide()
-                    }
-                >
-                    {!this.props.isSelecting ? 'Select' : 'Hide'} 
-                </button>
+                {this.props.hasSelected ?
+                    <button className="select" 
+                        onClick={() => !this.props.isSelecting 
+                            ? this.props.onSelect()
+                            : this.props.onHide()
+                        }
+                    >
+                        {!this.props.isSelecting ? 'Select' : 'Hide'} 
+                    </button>
+                    : <div/>
+                }
                 <button className="add">Add</button>
             </div>
         )
@@ -25,7 +28,8 @@ class ProjectsBottom extends React.Component {
 
 function mapStateToProps({projects}) {
     return {
-        isSelecting: projects.is_selecting 
+        isSelecting: projects.is_selecting,
+        hasSelected: projects.selected != null
     }
 }
 
