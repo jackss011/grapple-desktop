@@ -26,7 +26,7 @@ export default function(state = initState, action) {
             return Object.assign({}, state, {adding: false})
         
         case ActionTypes.SELECT_PROJECT:
-            return Object.assign({}, state, {selected: action.uid})
+            return Object.assign({}, state, {selected: action.uid, is_selecting: false})
 
         case ActionTypes.SHOW_PROJECT_SELECTION:
             return Object.assign({}, state, {is_selecting: true})
