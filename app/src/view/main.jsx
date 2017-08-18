@@ -24,6 +24,9 @@ import Database from '~/model/database'
 import databaseMiddleware from '~/redux/middleware/database-middleware'
 
 
+//storage
+import storageMiddleware from '~/redux/middleware/storage-middleware'
+
 
 // APPLICATION
 const account = new Account()
@@ -35,7 +38,8 @@ const logger = createLogger({
 
 const store = createStore(reducer, applyMiddleware(
     accountMiddleware(account), 
-    databaseMiddleware(database), 
+    databaseMiddleware(database),
+    storageMiddleware,
     logger
 ))
 
