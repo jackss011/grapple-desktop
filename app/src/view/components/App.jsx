@@ -7,6 +7,7 @@ import Header from './header/Header'
 import InitSpinner from './InitSpinner'
 import ProjectsPane from './projects/ProjectsPane'
 import MissingLabel from './generic/MissingLabel'
+import Dialog from './generic/Dialog'
 
 import ActionsGenerator from '~/redux/actions/actions-generator'
 
@@ -34,7 +35,7 @@ class App extends React.Component {
                         )
                     }
                 </div>
-                
+                <Dialog/>
             </div>
         )
     }

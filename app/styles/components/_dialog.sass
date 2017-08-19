@@ -1,0 +1,13 @@
+.dialog
+    position: absolute
+    +size(100%)
+    z-index: 100
+    +flex(center, center)
+    visibility: hidden
+
+    &.visible
+        visibility: visible
+
+    &>.dialog-window
+        @extend .card
+        background-color: white
