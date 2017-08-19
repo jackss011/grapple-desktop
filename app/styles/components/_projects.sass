@@ -1,0 +1,124 @@
+
+.projects-pane
+    display: flex
+    flex-direction: column
+    width: 300px
+    border-right: $border-heavy
+    overflow: hidden
+ 
+    &>.inside
+        +flex(flex-start, stretch, column)
+        flex-grow: 1
+
+        & > *:nth-child(2)
+            border-top: $border-heavy
+
+
+.projects-list
+    +flex(flex-start, stretch, column)
+    flex-grow: 1
+    background-color: #fcfcfc
+
+    .list
+        +flex(flex-start, stretch, column)
+        flex-grow: 1
+        overflow-y: auto
+
+    h1
+        font-size: 1.3rem
+        padding: 0
+        margin: 0
+
+
+.projects-header
+    padding: 5px 10px
+    padding-bottom: 8px
+    background-color: white
+
+
+.add-project
+    +concrete-button(#4CAF50)
+
+
+.cancel-project
+    +ethereal-button(#cb2431)
+
+
+
+.project-row
+    @extend .card
+    position: relative
+    padding: 10px 14px
+    font-size: 1.2rem
+    
+    .name
+        color: #333
+        font-size: 1em
+        margin-bottom: 5px
+
+    .description
+        color: #aaa
+        font-size: 0.8em
+
+    &.selected:after
+        display: block
+        content: ""
+        background-color: pink
+        border-radius: 50%
+        +size(0.5em)
+        top: 0
+        right: 0
+        margin: 8px
+        position: absolute
+
+
+.project-spinner
+    +flex(left, center)
+    padding: 10px 20px
+    color: #888
+
+    .animated-spinner
+        +animated-spinner()
+        margin-right: 12px
+
+
+.add-project-form
+    padding: 8px
+
+    input[type="text"]
+        margin-bottom: 8px
+
+    div
+        display: flex
+
+    .add-project
+        margin-right: 10px
+
+
+.projects-bottom
+    +flex(space-between, center)
+    flex-shrink: 0
+    border-top: $border-base
+    padding: 5px 10px
+
+    .select
+        +sneaky-button(#2196F3)
+
+    .add
+        +sneaky-button(#00C853)
+
+
+.project-details
+    padding: 13px 15px
+    background-color: white
+
+    .name
+        font-size: 1.3rem
+        font-weight: bold
+        padding-bottom: 6px
+
+    .description
+        color: #444
+
+    .delete-button
+        margin-top: 10px

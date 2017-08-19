@@ -9,6 +9,8 @@ export default database => {
             dispatch(ActionsGenerator.onProjects(projects))
 
         return next => action => {
+            const res = next(action)
+
             switch(action.type) {
                 case ActionTypes.INITIALIZE:
                     database.initialize()
@@ -17,9 +19,13 @@ export default database => {
                 case ActionTypes.SUBMIT_PROJECT:
                     database.submitProject(action.name, action.description)
                     break
+
+                case ActionTypes.DELETE_PROJECT:
+                    database.deleteProject(action.uid)
+                    break
             }
 
-            return next(action)
+            return res
         }
     }
 }

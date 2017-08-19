@@ -1,0 +1,33 @@
+=spinner-settings($size, $width)
+    height: $size
+    width: $size
+    border-width: $width
+
+    &:after
+        height: $size
+        width: $size
+
+=animated-spinner($size: 20px, $width: 0.15em)
+    position: relative
+    border-style: solid
+    border-color: orangered
+    border-radius: 50%
+    +spinner-settings($size, $width)
+    border-left-color: transparent
+    border-right-color: transparent
+    animation: spin 2s linear infinite
+
+    &:after
+        position: absolute
+        content: ""
+        display: block
+        border-radius: 50%
+        background-color: #f0f0f0
+        z-index: -1
+
+@keyframes spin
+    0%
+        transform: rotate(0deg)
+
+    100%
+        transform: rotate(360deg)

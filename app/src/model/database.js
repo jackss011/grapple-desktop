@@ -49,6 +49,12 @@ class Database {
                 .push().set({name, description})
         }
     }
+
+    deleteProject(uid) {
+        if(this.hasUser) {
+            this.ref(`projects/${uid}`).remove()
+        }
+    }
 }
 
 export default Database

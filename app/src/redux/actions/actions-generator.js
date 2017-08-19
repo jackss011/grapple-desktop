@@ -30,10 +30,24 @@ const ActionsGenerator = {
         name, description
     }),
 
+    deleteProject: uid => ({
+        type: ActionTypes.DELETE_PROJECT,
+        uid
+    }),
+
     onProjects: projects => ({
         type: ActionTypes.ON_PROJECTS,
         projects
-    })
+    }),
+
+    selectProject: uid => ({
+        type: ActionTypes.SELECT_PROJECT,
+        uid
+    }),
+
+    showProjectSelection: () => ({ type: ActionTypes.SHOW_PROJECT_SELECTION }),
+
+    hideProjectSelection: () => ({ type: ActionTypes.HIDE_PROJECT_SELECTION }),
 }
 
 export default ActionsGenerator

@@ -1,13 +1,20 @@
-$accent: #0097A7
+@import 'values/colors'
+@import 'values/variables'
+@import 'res/fonts'
+@import 'res/icons'
 
-@import mixins
-@import fonts
-@import icons
-@import misc
+@import 'lib/mixins'
+@import 'lib/templates'
 
-@import header
-@import projects
+@import 'misc'
+@import 'components/generic'
+@import 'components/header'
+@import 'components/projects'
+@import 'components/popup'
 
+
+\:root
+    font-size: 14px
 
 html, body, #root, #root > div
     height: 100%
@@ -27,8 +34,3 @@ body
     display: flex
     align-items: stretch
     flex-grow: 1
-
-hr
-    margin: 0
-    border: none
-    border-bottom: 1px solid #ccc
