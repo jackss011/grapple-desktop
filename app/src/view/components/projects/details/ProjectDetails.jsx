@@ -13,7 +13,12 @@ class ProjectDetails extends React.Component {
             <div className="project-details">
                 <div className="name">{this.props.project.name}</div>
                 <div className="description">{this.props.project.description}</div>
-                <button onClick={() => this.props.onDelete(this.props.projectUid)}>X</button>
+                <button 
+                    className="delete-button" 
+                    onClick={() => this.props.onDelete(this.props.projectUid)}
+                >
+                    <i className="material-icons small">clear</i>
+                </button>
             </div>
         )
     }

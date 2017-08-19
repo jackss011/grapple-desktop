@@ -19,7 +19,7 @@ class ProjectsBottom extends React.Component {
                     </button>
                     : <div/>
                 }
-                <button className="add">Add</button>
+                <button className="add" onClick={this.props.tempAdd}>Add</button>
             </div>
         )
     }
@@ -36,7 +36,8 @@ function mapStateToProps({projects}) {
 function mapDispatchToProps(dispatch) {
     return {
         onSelect: () => dispatch(ActionsGenerator.showProjectSelection()),
-        onHide: () => dispatch(ActionsGenerator.hideProjectSelection())
+        onHide: () => dispatch(ActionsGenerator.hideProjectSelection()),
+        tempAdd: () => dispatch(ActionsGenerator.submitProject('temp', 'Remenber to delete this'))
     }
 }
 
