@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import ActionsGenerator from '~/redux/actions/actions-generator'
+
 
 class ProjectDetails extends React.Component {
     render() {
@@ -11,6 +13,7 @@ class ProjectDetails extends React.Component {
             <div className="project-details">
                 <div className="name">{this.props.project.name}</div>
                 <div className="description">{this.props.project.description}</div>
+                <button onClick={() => this.props.onDelete(this.props.projectUid)}>X</button>
             </div>
         )
     }
@@ -25,7 +28,9 @@ function mapStateToProps({projects}) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return {}
+    return {
+        onDelete: uid => dispatch(ActionsGenerator.deleteProject(uid))
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectDetails)

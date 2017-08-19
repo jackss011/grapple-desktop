@@ -1,7 +1,6 @@
 import ActionTypes from '../actions/action-types'
 
 const initState = {
-    projects: null,
     adding: false,
     initial_loading: true,
     selected: null,
@@ -11,10 +10,17 @@ const initState = {
 export default function(state = initState, action) {
     switch(action.type) {
         case ActionTypes.ON_PROJECTS:
-            return Object.assign({}, state, {
+            let newState = Object.assign({}, state, {
                 list: action.projects,
                 initial_loading: false
             })
+
+            if(state.selected != null) {
+                if(action.projects == null || !action.projects.hasOwnProperty(state.selected))
+                    Object.assign(newState, {selected: null})
+            }
+            
+            return newState
 
         case ActionTypes.ADD_PROJECT:
             return Object.assign({}, state, {adding: true})

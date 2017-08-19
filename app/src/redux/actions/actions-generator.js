@@ -30,6 +30,11 @@ const ActionsGenerator = {
         name, description
     }),
 
+    deleteProject: uid => ({
+        type: ActionTypes.DELETE_PROJECT,
+        uid
+    }),
+
     onProjects: projects => ({
         type: ActionTypes.ON_PROJECTS,
         projects
