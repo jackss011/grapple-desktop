@@ -34,8 +34,11 @@
     "babel": {
         "plugins": [
             "transform-react-jsx",
-            ["babel-plugin-root-import", 
-                { "rootPathSuffix": "app/src" }
+            [
+                "babel-plugin-root-import",
+                {
+                    "rootPathSuffix": "app/src"
+                }
             ]
         ],
         "presets": [

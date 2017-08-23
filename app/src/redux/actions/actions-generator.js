@@ -30,10 +30,17 @@ const ActionsGenerator = {
         name, description
     }),
 
+
+    deleteProjectConfirm: (confirmed, uid) => ({
+        type: ActionTypes.DELETE_PROJECT_CONFIRM,
+        confirmed, uid
+    }),
+
     deleteProject: uid => ({
         type: ActionTypes.DELETE_PROJECT,
         uid
     }),
+
 
     onProjects: projects => ({
         type: ActionTypes.ON_PROJECTS,

@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import ConfirmDeleteProject from '../projects/details/ConfirmDeleteProject'
+
 
 class Dialog extends React.Component {
     get adclass() { return this.props.mode ? 'visible' : ''}
@@ -16,18 +18,18 @@ class Dialog extends React.Component {
     }
 
     getChild() {
-        switch(this.props.mode) {
-        }
-        return 'Hello'
-        
+        return this.props.mode && <this.props.mode/>
     }
 }
 
 
-function mapStateToProps(state) {
-    return {
-        mode: 2
-    }
+function mapStateToProps({projects}) {
+    let mode = null
+
+    if(projects.deleting)
+        mode = ConfirmDeleteProject
+
+    return { mode }
 }
 
 function mapDispatchToProps(dispatch) {

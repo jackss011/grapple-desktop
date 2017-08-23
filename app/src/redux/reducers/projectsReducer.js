@@ -4,7 +4,8 @@ const initState = {
     adding: false,
     initial_loading: true,
     selected: null,
-    is_selecting: false
+    is_selecting: false,
+    deleting: null
 }
 
 export default function(state = initState, action) {
@@ -19,8 +20,9 @@ export default function(state = initState, action) {
                 if(action.projects == null || !action.projects.hasOwnProperty(state.selected))
                     Object.assign(newState, {selected: null})
             }
-            
+
             return newState
+
 
         case ActionTypes.ADD_PROJECT:
             return Object.assign({}, state, {adding: true})
@@ -30,9 +32,18 @@ export default function(state = initState, action) {
 
         case ActionTypes.SUBMIT_PROJECT:
             return Object.assign({}, state, {adding: false})
-        
+
+
+        case ActionTypes.DELETE_PROJECT:
+            return Object.assign({}, state, {deleting: action.uid})
+
+        case ActionTypes.DELETE_PROJECT_CONFIRM:
+            return Object.assign({}, state, {deleting: null})
+            
+
         case ActionTypes.SELECT_PROJECT:
             return Object.assign({}, state, {selected: action.uid, is_selecting: false})
+
 
         case ActionTypes.SHOW_PROJECT_SELECTION:
             return Object.assign({}, state, {is_selecting: true})
