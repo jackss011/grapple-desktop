@@ -17,24 +17,25 @@ class AddProjectForm extends React.Component {
     render() {
         return (
             <form className="add-project-form" onSubmit={e => this.onSubmit(e)}>
-                <input 
-                    name="name" 
+                <h1>Add new project</h1>
+                <input
+                    name="name"
                     type="text"
                     ref={input => this.nameInput = input}
                     onChange={e => this.inputChange(e)}
-                    placeholder="Name" 
+                    placeholder="Name"
                 />
-                <input 
-                    name="description" 
+                <input
+                    name="description"
                     type="text"
                     ref={input => this.descriptionInput = input}
                     onChange={e => this.inputChange(e)}
-                    placeholder="Description" 
+                    placeholder="Description"
                 />
 
-                <div>
-                    <input type="submit" className="add-project" value="Add"/>
-                    <input type="button" className="cancel-project" value="Cancel" onClick={() => this.onCancel()}/>
+                <div className="buttons">
+                    <input type="submit" className="add" value="Add"/>
+                    <input type="button" className="cancel" value="Cancel" onClick={() => this.onCancel()}/>
                 </div>
             </form>
         )

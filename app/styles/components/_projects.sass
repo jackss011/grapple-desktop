@@ -1,4 +1,3 @@
-
 .projects-pane
     display: flex
     flex-direction: column
@@ -12,7 +11,16 @@
 
         & > *:nth-child(2)
             border-top: $border-heavy
+//
 
+
+//*** PROJECT LIST ***
+
+.projects-header
+    padding: 5px 10px
+    padding-bottom: 8px
+    background-color: white
+//
 
 .projects-list
     +flex(flex-start, stretch, column)
@@ -23,27 +31,7 @@
         +flex(flex-start, stretch, column)
         flex-grow: 1
         overflow-y: auto
-
-    h1
-        font-size: 1.3rem
-        padding: 0
-        margin: 0
-
-
-.projects-header
-    padding: 5px 10px
-    padding-bottom: 8px
-    background-color: white
-
-
-.add-project
-    +concrete-button($green-add)
-
-
-.cancel-project
-    +ethereal-button($red-cancel)
-
-
+//
 
 .project-row
     @extend .card
@@ -70,7 +58,10 @@
         right: 0
         margin: 8px
         position: absolute
+//
 
+
+//*** OTHER ***
 
 .project-spinner
     +flex(left, center)
@@ -80,19 +71,34 @@
     .animated-spinner
         +animated-spinner()
         margin-right: 12px
+//
 
 
 .add-project-form
-    padding: 8px
+    padding: 10px 20px
+    padding-bottom: 6px
 
     input[type="text"]
         margin-bottom: 8px
 
-    div
-        display: flex
+    &>input:last-of-type
+        margin-bottom: 10px
 
-    .add-project
-        margin-right: 10px
+    h1
+        margin-top: 5px
+        margin-bottom: 12px
+
+    .buttons
+        +flex()
+        flex-direction: row-reverse
+
+        .add
+            +sneaky-button($green-add)
+            margin-left: 5px
+
+        .cancel
+            +sneaky-button($red-cancel)
+//
 
 
 .projects-bottom
@@ -106,7 +112,7 @@
 
     .add
         +sneaky-button($green-add-light)
-
+//
 
 .project-details
     padding: 13px 15px
@@ -122,3 +128,4 @@
 
     .delete-button
         margin-top: 10px
+//
