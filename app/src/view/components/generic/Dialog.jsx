@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import ConfirmDeleteProject from '../projects/details/ConfirmDeleteProject'
+import AddProjectForm from '../projects/AddProjectForm'
 
 
 class Dialog extends React.Component {
@@ -28,6 +29,8 @@ function mapStateToProps({projects}) {
 
     if(projects.deleting)
         mode = ConfirmDeleteProject
+    else if(projects.adding)
+        mode = AddProjectForm
 
     return { mode }
 }
