@@ -1,0 +1,38 @@
+.dialog
+    position: absolute
+    +size(100%)
+    z-index: 100
+    +flex(center, center)
+    visibility: hidden
+    background-color: rgba(black, 0.1)
+
+    &.visible
+        visibility: visible
+
+    &>.dialog-window
+        @extend .card
+        border-radius: 4px
+        background-color: white
+//
+
+
+.confirm-dialog
+    padding: 10px 20px
+
+    .label
+        font-size: 1.25rem
+        margin-top: 0.4em
+        margin-bottom: 0.6em
+
+    .buttons
+        +flex(flex-end)
+
+        & button:first-child
+            margin-right: 10px
+
+        .confirm
+            +sneaky-button($red-delete)
+
+        .cancel
+            +sneaky-button($grey-cancel)
+//

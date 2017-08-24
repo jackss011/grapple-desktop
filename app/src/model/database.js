@@ -11,7 +11,7 @@ class Database {
 
     initialize() {
         firebase.auth().onAuthStateChanged(user => {
-            
+
             if(user) {
                 this._uidCache = user && user.uid
 
@@ -33,11 +33,11 @@ class Database {
 
     ref(path) { return firebase.database().ref(`users/${this.uidCache}/${path}`) }
 
-    
+
     // PROJECTS
 
     get onProjects() { return this._onProjects }
-    
+
     set onProjects(callback) {
         if(callback && typeof callback !== 'function') throw 'callback must be a function'
         this._onProjects = callback
@@ -45,14 +45,17 @@ class Database {
 
     submitProject(name, description) {
         if(this.hasUser) {
-            firebase.database().ref(`users/${this.uid}/projects`)
-                .push().set({name, description})
+            let newProject = firebase.database()
+                .ref(`users/${this.uid}/projects`).push()
+            newProject.set({name, description})
+
+            return newProject.key
         }
     }
 
     deleteProject(uid) {
         if(this.hasUser) {
-            this.ref(`projects/${uid}`).remove()
+            return this.ref(`projects/${uid}`).remove()
         }
     }
 }

@@ -9,17 +9,17 @@ class ProjectsBottom extends React.Component {
         return (
             <div className="projects-bottom">
                 {this.props.hasSelected ?
-                    <button className="select" 
-                        onClick={() => !this.props.isSelecting 
+                    <button className="select"
+                        onClick={() => !this.props.isSelecting
                             ? this.props.onSelect()
                             : this.props.onHide()
                         }
                     >
-                        {!this.props.isSelecting ? 'Select' : 'Hide'} 
+                        {!this.props.isSelecting ? 'Select' : 'Hide'}
                     </button>
                     : <div/>
                 }
-                <button className="add" onClick={this.props.tempAdd}>Add</button>
+                <button className="add" onClick={this.props.onAdd}>Add</button>
             </div>
         )
     }
@@ -37,7 +37,7 @@ function mapDispatchToProps(dispatch) {
     return {
         onSelect: () => dispatch(ActionsGenerator.showProjectSelection()),
         onHide: () => dispatch(ActionsGenerator.hideProjectSelection()),
-        tempAdd: () => dispatch(ActionsGenerator.submitProject('temp', 'Remenber to delete this'))
+        onAdd: () => dispatch(ActionsGenerator.addProject())
     }
 }
 
