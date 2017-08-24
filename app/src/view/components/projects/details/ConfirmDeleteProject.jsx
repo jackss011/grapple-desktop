@@ -10,7 +10,7 @@ class ConfirmDeleteProject extends React.Component {
         let name = this.props.project ? this.props.project.name : "nothing"
 
         return (
-            <ConfirmDialog
+            <ConfirmDialog className="confirm-delete"
                 onConfirm={() => this.props.onConfirm(this.props.uid)}
                 onCancel={this.props.onCancel}
             >
