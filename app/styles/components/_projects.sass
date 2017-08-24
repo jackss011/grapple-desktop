@@ -5,7 +5,7 @@
     width: 300px
     border-right: $border-heavy
     overflow: hidden
- 
+
     &>.inside
         +flex(flex-start, stretch, column)
         flex-grow: 1
@@ -37,11 +37,11 @@
 
 
 .add-project
-    +concrete-button(#4CAF50)
+    +concrete-button($green-add)
 
 
 .cancel-project
-    +ethereal-button(#cb2431)
+    +ethereal-button($red-cancel)
 
 
 
@@ -50,7 +50,7 @@
     position: relative
     padding: 10px 14px
     font-size: 1.2rem
-    
+
     .name
         color: #333
         font-size: 1em
@@ -102,10 +102,10 @@
     padding: 5px 10px
 
     .select
-        +sneaky-button(#2196F3)
+        +sneaky-button($blue-select)
 
     .add
-        +sneaky-button(#00C853)
+        +sneaky-button($green-add-light)
 
 
 .project-details
