@@ -45,8 +45,11 @@ class Database {
 
     submitProject(name, description) {
         if(this.hasUser) {
-            return firebase.database().ref(`users/${this.uid}/projects`)
-                .push().set({name, description})
+            let newProject = firebase.database()
+                .ref(`users/${this.uid}/projects`).push()
+            newProject.set({name, description})
+
+            return newProject.key
         }
     }
 

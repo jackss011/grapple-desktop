@@ -17,7 +17,8 @@ export default database => {
                     break
 
                 case ActionTypes.SUBMIT_PROJECT:
-                    database.submitProject(action.name, action.description)
+                    let uid = database.submitProject(action.name, action.description)
+                    dispatch(ActionsGenerator.selectProject(uid))
                     break
 
                 case ActionTypes.DELETE_PROJECT_CONFIRM:
