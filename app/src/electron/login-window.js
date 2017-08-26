@@ -13,15 +13,22 @@ module.exports = class LoginWindow {
     }
 
     show() {
-        this.window = new BrowserWindow({
-            width: 350, 
-            height: 500, 
-            parent: this.parent, 
-            modal: true, 
-            title: "Sign in"
-        })
-        
-        //this.window.webContents.openDevTools()
+        let size = { width: 350, height: 500 }
+        let mainBounds = this.parent.getBounds()
+
+        let pos = {
+            x: parseInt(mainBounds.x - size.width / 2 + mainBounds.width / 2),
+            y: parseInt(mainBounds.y - size.height / 2 + mainBounds.height / 2)
+        }
+
+        this.window = new BrowserWindow(Object.assign({
+                parent: this.parent,
+                modal: true,
+                title: "Sign in"
+            },
+            size, pos
+        ))
+
         this.window.setMenu(null)
         this.window.on('closed', () => this.window = null)
         this.window.loadURL(url.format({
