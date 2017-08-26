@@ -8,8 +8,8 @@
         "start": "grunt & electron .",
         "pack": "grunt & electron-builder --dir -w --x64",
         "watch": "nodemon --exec \"npm start\" .",
-        "watch-web": "nodemon --exec \"node_modules\\.bin\\grunt\"",
-        "watch-sass": "nodemon --exec \"node_modules\\.bin\\grunt sass\""
+        "watch-web": "nodemon --exec \"node_modules\\.bin\\grunt\" --watch ./app",
+        "watch-sass": "nodemon --exec \"node_modules\\.bin\\grunt sass\" --watch ./app/styles"
     },
     "dependencies": {
         "electron-reload": "^1.2.1",
