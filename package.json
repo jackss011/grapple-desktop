@@ -7,9 +7,12 @@
     "scripts": {
         "start": "grunt & electron .",
         "pack": "grunt & electron-builder --dir -w --x64",
-        "watch": "nodemon --exec \"npm start\" ."
+        "watch": "nodemon --exec \"npm start\" .",
+        "watch-web": "nodemon --exec \"node_modules\\.bin\\grunt\"",
+        "watch-sass": "nodemon --exec \"node_modules\\.bin\\grunt sass\""
     },
     "dependencies": {
+        "electron-reload": "^1.2.1",
         "express": "^4.15.3",
         "firebase": "^4.1.3",
         "jquery": "^3.2.1",

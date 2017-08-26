@@ -11,6 +11,8 @@ const url = require('url')
 const LocalStorage = require('./src/electron/local-storage')
 const storage = new LocalStorage()
 
+try { require('electron-reload')(__dirname) } catch(e) {console.log(e);}
+
 let mainWindow = null
 let loginWindow = null
 
