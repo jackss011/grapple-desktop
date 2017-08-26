@@ -15,15 +15,13 @@ let mainWindow = null
 let loginWindow = null
 
 function createWindow () {
-    let [x, y, w, h] = storage.getAll('lw_x', 'lw_y', 'lw_w', 'lw_h')
+    let [x, y, w, h] = retrieveWindowPos()
 
     mainWindow = new BrowserWindow({x: x, y: y, width: w, height: h, title: "Grapple"})
     mainWindow.setMenu(null)
     mainWindow.on('closed', () => mainWindow = null)
-    mainWindow.on('close', () => {
-        let b = mainWindow.getBounds();
-        storage.saveAll({lw_x: b.x, lw_y: b.y, lw_w: b.width, lw_h: b.height})
-    })
+    mainWindow.on('resize', () => saveWindowPos(mainWindow))
+    mainWindow.on('move', () => saveWindowPos(mainWindow))
 
     mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, 'index.html'),
@@ -41,6 +39,18 @@ function onLoginResult(token) {
     } else {
         mainWindow.webContents.send('login-popup-token', token)
     }
+}
+
+function saveWindowPos(window) {
+    let b = window.getBounds();
+    console.log("saving:", b);
+    storage.saveAll({lw_x: b.x, lw_y: b.y, lw_w: b.width, lw_h: b.height})
+}
+
+function retrieveWindowPos() {
+    let b =storage.getAll('lw_x', 'lw_y', 'lw_w', 'lw_h')
+    console.log("get:", b);
+    return b
 }
 
 
