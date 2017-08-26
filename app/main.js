@@ -15,9 +15,9 @@ let mainWindow = null
 let loginWindow = null
 
 function createWindow () {
-    let [x, y, w, h] = retrieveWindowPos()
+    let {x, y, width, height} = retrieveWindowPos()
 
-    mainWindow = new BrowserWindow({x: x, y: y, width: w, height: h, title: "Grapple"})
+    mainWindow = new BrowserWindow({x, y, width, height, title: "Grapple"})
     mainWindow.setMenu(null)
     mainWindow.on('closed', () => mainWindow = null)
     mainWindow.on('resize', () => saveWindowPos(mainWindow))
@@ -42,15 +42,11 @@ function onLoginResult(token) {
 }
 
 function saveWindowPos(window) {
-    let b = window.getBounds();
-    console.log("saving:", b);
-    storage.saveAll({lw_x: b.x, lw_y: b.y, lw_w: b.width, lw_h: b.height})
+    storage.save('window_bounds', window.getBounds())
 }
 
 function retrieveWindowPos() {
-    let b =storage.getAll('lw_x', 'lw_y', 'lw_w', 'lw_h')
-    console.log("get:", b);
-    return b
+    return storage.get('window_bounds') || 0
 }
 
 
