@@ -39,18 +39,29 @@
     padding: 10px 14px
     font-size: 1.2rem
 
+    .top
+        +flex(space-between)
+    //
+
     .name
         color: #333
         font-size: 1em
         margin-bottom: 5px
+    //
 
     .description
         color: #aaa
         font-size: 0.8em
+    //
 
-    &.selected:after
+    .date
+        font-size: 0.65em
+        margin-right: 12px
+        color: $text-aside
+    //
+
+    .selected-dot
         display: block
-        content: ""
         background-color: pink
         border-radius: 50%
         +size(0.5em)
@@ -58,6 +69,7 @@
         right: 0
         margin: 8px
         position: absolute
+    //
 //
 
 
