@@ -23,6 +23,14 @@ class ProjectDetails extends React.Component {
                     >
                         <i className="material-icons small">clear</i>
                     </button>
+
+                    <button
+                        className="edit-button"
+                        onClick={() => {}}
+                    >
+                        <i className="material-icons small">edit</i>
+                    </button>
+
                 </div>
             </div>
         )

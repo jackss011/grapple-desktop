@@ -143,7 +143,18 @@
 
     .action-bar
         +flex-column()
+        padding: 2px
+
+        button
+            margin-bottom: 3px
 
         .delete-button
-            margin: 2px
+            +sneaky-button($red-delete)
+            padding: 0.2em
+            +size(auto)
+
+        .edit-button
+            +sneaky-button(#666)
+            padding: 0.2em
+            +size(auto)
 //
