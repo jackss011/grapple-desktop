@@ -5,6 +5,14 @@
     flex-direction: $dir
 //
 
+=flex-row($jc: null, $ai: null)
+    +flex($jc, $ai, row)
+//
+
+=flex-column($jc: null, $ai: null)
+    +flex($jc, $ai, column)
+//
+
 =size($w, $h: $w)
     height: $h
     width: $w
