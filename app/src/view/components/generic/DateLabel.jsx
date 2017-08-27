@@ -31,13 +31,11 @@ class DateLabel extends React.Component {
                     + ' '
                     + month
             else {
-
-                return this.ft(date.getMonth())
+                return month
                     + ' '
-                    + date.getYear()
+                    + date.getFullYear()
             }
         }
-
     }
 
     ft(time) {
