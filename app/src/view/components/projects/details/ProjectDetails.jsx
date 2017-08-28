@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import ActionsGenerator from '~/redux/actions/actions-generator'
+import {formatTimestamp} from '~/model/utils'
 
 
 class ProjectDetails extends React.Component {
@@ -13,6 +14,7 @@ class ProjectDetails extends React.Component {
             <div className="project-details">
                 <div className="texts">
                     <div className="name">{this.props.project.name}</div>
+                    <div className="timestamp">{`Created: ${formatTimestamp(this.props.project.timestamp)}`}</div>
                     <div className="description">{this.props.project.description}</div>
                 </div>
 
