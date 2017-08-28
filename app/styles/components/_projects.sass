@@ -27,10 +27,20 @@
     flex-grow: 1
     background-color: #fcfcfc
 
+    .project-spinner
+        padding: 10px 20px
+
     .list
         +flex(flex-start, stretch, column)
         flex-grow: 1
         overflow-y: auto
+
+    .project-row
+        margin-top: 8px
+        margin-bottom: 0px
+
+        &:last-of-type
+            margin-bottom: 8px
 //
 
 .project-row
@@ -38,34 +48,43 @@
     position: relative
     padding: 10px 14px
     font-size: 1.2rem
+    overflow: hidden
+
+    .top
+        +flex(space-between)
+    //
 
     .name
         color: #333
         font-size: 1em
         margin-bottom: 5px
+    //
 
     .description
         color: #aaa
         font-size: 0.8em
+    //
 
-    &.selected:after
+    .date
+        font-size: 0.65em
+        color: $text-aside
+    //
+
+    .selected-dot
         display: block
-        content: ""
-        background-color: pink
-        border-radius: 50%
-        +size(0.5em)
+        background-color: $yellow-selected
+        +size(4px, 100%)
         top: 0
         right: 0
-        margin: 8px
         position: absolute
+    //
 //
 
 
 //*** OTHER ***
 
 .project-spinner
-    +flex(left, center)
-    padding: 10px 20px
+    +flex(flex-start, center)
     color: #888
 
     .animated-spinner
@@ -115,17 +134,42 @@
 //
 
 .project-details
+    +flex-row(space-between)
     padding: 13px 15px
     background-color: white
 
-    .name
-        font-size: 1.3rem
-        font-weight: bold
-        padding-bottom: 6px
+    .texts
+        .name
+            font-size: 1.3rem
+            font-weight: bold
+            padding-bottom: 2px
+        //
 
-    .description
-        color: #444
+        .timestamp
+            font-size: 0.8em
+            color: $text-aside
+            padding-bottom: 8px
+        //
 
-    .delete-button
-        margin-top: 10px
+        .description
+            color: #444
+        //
+    //
+
+    .action-bar
+        +flex-column()
+        padding: 2px
+
+        button
+            margin-bottom: 3px
+
+        .delete-button
+            +sneaky-button($red-delete)
+            padding: 0.2em
+            +size(auto)
+
+        .edit-button
+            +sneaky-button(#666)
+            padding: 0.2em
+            +size(auto)
 //

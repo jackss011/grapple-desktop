@@ -15,10 +15,9 @@ class ProjectList extends React.Component {
             <div className="projects-list">
                 <ProjectListHeader/>
                 <hr/>
-                
-                {this.props.initial_loading 
-                    ? <ProjectsSpinner/> 
-                    : 
+
+                {this.props.initial_loading ?
+                    <ProjectsSpinner/> :
                     <div className="list">
                         {this.createList()}
                     </div>
@@ -28,7 +27,7 @@ class ProjectList extends React.Component {
     }
 
     createList() {
-        if(this.props.projects == null) 
+        if(this.props.projects == null)
             return <MissingLabel>No projects</MissingLabel>;
 
         return Object.entries(this.props.projects).map(
@@ -36,14 +35,14 @@ class ProjectList extends React.Component {
                 <ProjectRow
                     key={uid}
                     uid={uid}
-                    project={project} 
+                    project={project}
                     onClick={() => this.selectProject(uid)}
                     isSelected={this.props.selected === uid}
                 />
             )
         )
     }
- 
+
     selectProject(uid) {
         this.props.onSelect(uid)
     }

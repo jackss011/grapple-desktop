@@ -11,7 +11,6 @@ class Database {
 
     initialize() {
         firebase.auth().onAuthStateChanged(user => {
-
             if(user) {
                 this._uidCache = user && user.uid
 
@@ -47,7 +46,12 @@ class Database {
         if(this.hasUser) {
             let newProject = firebase.database()
                 .ref(`users/${this.uid}/projects`).push()
-            newProject.set({name, description})
+
+            newProject.set({
+                name,
+                description,
+                timestamp: firebase.database.ServerValue.TIMESTAMP
+            })
 
             return newProject.key
         }
