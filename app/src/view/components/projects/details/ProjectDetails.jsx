@@ -1,14 +1,15 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import ProjectsSpinner from '../ProjectsSpinner'
+
 import ActionsGenerator from '~/redux/actions/actions-generator'
 import {formatTimestamp} from '~/model/utils'
 
 
 class ProjectDetails extends React.Component {
     render() {
-
-        if(!this.props.project) return <div className="project-details"/> //TODO ADD SPINNER HERE
+        if(!this.props.project) return <div className="project-details"><ProjectsSpinner/></div>
 
         return (
             <div className="project-details">
