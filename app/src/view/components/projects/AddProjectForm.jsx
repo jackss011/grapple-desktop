@@ -25,9 +25,9 @@ class AddProjectForm extends React.Component {
                     onChange={e => this.inputChange(e)}
                     placeholder="Name"
                 />
-                <input
+                <textarea
                     name="description"
-                    type="text"
+                    rows="10" cols ="40"
                     ref={input => this.descriptionInput = input}
                     onChange={e => this.inputChange(e)}
                     placeholder="Description"
