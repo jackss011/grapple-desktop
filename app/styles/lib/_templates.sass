@@ -15,3 +15,24 @@
 .flex-space
     flex-grow: 1
 //
+
+
+.input-base
+    background-color: white
+    outline: none
+    padding: 5px
+    border-radius: 2px
+    border: 1px solid #bbb
+    margin: 0
+    color: #444
+    font-family: Roboto
+    font-size: 0.95em
+    display: block
+
+    &.invalid
+        border-color: $red-cancel
+        background-color: lighten($red-cancel, 45)
+
+    &:focus
+        border-color: $blue-select
+//
