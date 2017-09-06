@@ -1,5 +1,8 @@
 import React from 'react'
 
+import {pick} from '~/model/utils'
+
+
 export class Input extends React.Component {
     constructor(props) {
         super(props)
@@ -9,16 +12,14 @@ export class Input extends React.Component {
 
     render() {
         let visualError = this.state.dirty && this.state.error
-        console.log(this.props);
 
         return (
             <div className="validator">
                 <input
                     className={visualError ? 'invalid' : ''}
-                    name={this.props.name}
-                    type={this.props.type}
                     value={this.props.value}
                     onChange={({target}) => this.onChange(target.name, target.value)}
+                    {...pick(this.props, 'name', 'type')}
                 />
                 <div className="label">{visualError}</div>
             </div>
@@ -83,11 +84,20 @@ export class Form extends React.Component {
     }
 
     hasValidInput() {
+        return Object.entries(this.state)
+            .reduce((res, [,{valid}]) => res && valid, true)
+    }
 
+    getDataPack() {
+        return Object.entries(this.state)
+            .reduce((res, [name, {value}]) => {
+                res[name] = value
+                return res
+            }, {})
     }
 
     onSubmit(e) {
         e.preventDefault()
-        //this.hasValidInput()
+        this.props.onSubmit && this.props.onSubmit(this.getDataPack())
     }
 }

@@ -13,7 +13,11 @@ class AddProjectForm extends React.Component {
 
     render() {
         return (
-            <Form name="add-project" className="add-project-form">
+            <Form
+                name="add-project"
+                className="add-project-form"
+                onSubmit={({name, description}) => this.props.onSubmit(name, description)} //TODO make project a single object
+            >
                 <h1>Add a project</h1>
                 <Input type="text" name="name" validator={Validate.projectName}/>
 
