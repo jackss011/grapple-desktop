@@ -40,3 +40,7 @@ export function formatTime(time) {
     let s = time.toString()
     return s.length <= 1 ? '0' + s : s
 }
+
+export function pick(o, ...props) {
+    return Object.assign({}, ...props.map(prop => ({[prop]: o[prop]})));
+}
