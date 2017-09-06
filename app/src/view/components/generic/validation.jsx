@@ -11,8 +11,6 @@ export class Input extends React.Component {
         let visualError = this.state.dirty && this.state.error
         console.log(this.props);
 
-        //let {className, value, onChange, ...childProps}
-
         return (
             <div className="validator">
                 <input
@@ -64,7 +62,7 @@ export class Form extends React.Component {
     }
 
     getInputValue(name) {
-        this.state.hasOwnProperty(name)
+        return this.state.hasOwnProperty(name)
             ? this.state[name].value
             : null
     }
@@ -74,7 +72,7 @@ export class Form extends React.Component {
             if(!this.isInputChild(child)) return child
 
             return React.cloneElement(child, {
-                value: this.getInputValue(child.props.name) || '',
+                value: this.getInputValue(child.props.name),
                 onChange: c => this.onChildChange(c)
             })
         })
