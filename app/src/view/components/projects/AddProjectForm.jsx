@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import ActionGenerator from '~/redux/actions/actions-generator'
-import {Form, Input} from '../generic/validation'
+import {Form, Input, Submit} from '../generic/validation'
 import Validate from '~/model/validators'
 
 
@@ -22,7 +22,7 @@ class AddProjectForm extends React.Component {
                 <Input type="text" name="name" validator={Validate.projectName}/>
 
                 <div className="buttons">
-                    <input type="submit" value="Add"/>
+                    <Submit>Add</Submit>
                     <button className="cancel" onClick={() => this.props.onCancel()}>Cancel</button>
                 </div>
             </Form>

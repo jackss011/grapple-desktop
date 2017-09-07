@@ -3,6 +3,19 @@ import React from 'react'
 import {pick} from '~/model/utils'
 
 
+export class Submit extends React.Component {
+    render() {
+        return (
+            <input
+                type="submit"
+                value={React.Children.toArray(this.props.children)[0]}
+                disabled={this.props.disabled}
+            />
+        )
+    }
+}
+
+
 export class Input extends React.Component {
     constructor(props) {
         super(props)
@@ -65,13 +78,14 @@ export class Form extends React.Component {
     }
 
     makeChildren(parent) {
-        console.log('making for:', parent)
+        //console.log('making for:', parent)
         if(!parent.props) return null
 
         return React.Children.map(parent.props.children, child => {
-            console.log('child is:', child);
+            //console.log('child is:', child);
             switch(child.type) {
                 case Input: return this.makeInput(child)
+                case Submit: return this.makeSubmit(child)
                 case 'div': return this.makeElement(child)
                 default: return child
             }
@@ -86,6 +100,12 @@ export class Form extends React.Component {
         return React.cloneElement(input, {
             value: this.getInputValue(input.props.name),
             onChange: c => this.onChildChange(c)
+        })
+    }
+
+    makeSubmit(submit) {
+        return React.cloneElement(submit, {
+            disabled: !this.hasValidInput()
         })
     }
 
