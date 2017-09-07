@@ -21,19 +21,27 @@ export class Input extends React.Component {
         super(props)
 
         this.state = {error: '', dirty: false}
+        this.inputTag="input"
+        this.pickProps=[]
     }
 
     render() {
+        const input = (
+            <this.inputTag
+                className={visualError ? 'invalid' : ''}
+                value={this.props.value}
+                onChange={({target}) => this.onChange(target.name, target.value)}
+                {...pick(this.props, 'name', 'type', 'placeholder', ...this.pickProps)}
+            />
+        )
+
+        if(!this.props.validator) return input
+
         let visualError = this.state.dirty && this.state.error
 
         return (
             <div className="validator">
-                <input
-                    className={visualError ? 'invalid' : ''}
-                    value={this.props.value}
-                    onChange={({target}) => this.onChange(target.name, target.value)}
-                    {...pick(this.props, 'name', 'type')}
-                />
+                {input}
                 <div className="label">{visualError}</div>
             </div>
         )
@@ -48,6 +56,15 @@ export class Input extends React.Component {
 
     componentDidMount() {
         this.onChange(this.props.name, '')
+    }
+}
+
+export class TextArea extends Input {
+    constructor(props) {
+        super(props)
+
+        this.inputTag = 'textarea'
+        this.pickProps = ['cols', 'rows']
     }
 }
 
@@ -84,16 +101,28 @@ export class Form extends React.Component {
         return React.Children.map(parent.props.children, child => {
             //console.log('child is:', child);
             switch(child.type) {
-                case Input: return this.makeInput(child)
-                case Submit: return this.makeSubmit(child)
-                case 'div': return this.makeElement(child)
-                default: return child
+                case Input:
+                case TextArea:
+                    return this.makeInput(child)
+                case Submit:
+                    return this.makeSubmit(child)
+                case 'div':
+                    return this.makeElement(child)
+                default:
+                    return child
             }
         })
     }
 
     makeElement(element) {
         return React.cloneElement(element, {}, this.makeChildren(element))
+    }
+
+    makeNativeInput(native) {
+        return React.cloneElement(native, {
+            value: this.getInputValue(native.props.name),
+            onChange: c => this.onChildChange(c)
+        })
     }
 
     makeInput(input) {
@@ -128,7 +157,8 @@ export class Form extends React.Component {
 
     onSubmit(e) {
         e.preventDefault()
-        if(this.hasValidInput())
-            this.props.onSubmit && this.props.onSubmit(this.getDataPack())
+        console.log(this.getDataPack());
+        // if(this.hasValidInput())
+        //     this.props.onSubmit && this.props.onSubmit(this.getDataPack())
     }
 }

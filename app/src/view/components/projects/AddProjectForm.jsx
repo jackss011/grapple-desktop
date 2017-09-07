@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import ActionGenerator from '~/redux/actions/actions-generator'
-import {Form, Input, Submit} from '../generic/validation'
+import {Form, Input, Submit, TextArea} from '../generic/validation'
 import Validate from '~/model/validators'
 
 
@@ -19,7 +19,13 @@ class AddProjectForm extends React.Component {
                 onSubmit={({name, description}) => this.props.onSubmit(name, description)} //TODO make project a single object
             >
                 <h1>Add a project</h1>
-                <Input type="text" name="name" validator={Validate.projectName}/>
+
+                <Input type="text" name="name" validator={Validate.projectName} placeholder="Name"/>
+
+                <TextArea name="description"
+                    cols="50" rows="10"
+                    placeholder="Description"
+                />
 
                 <div className="buttons">
                     <Submit>Add</Submit>
