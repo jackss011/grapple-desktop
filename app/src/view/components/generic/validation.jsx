@@ -53,13 +53,9 @@ export class Form extends React.Component {
                 className={this.props.className || ''}
                 onSubmit={e => this.onSubmit(e)}
             >
-                {this.makeChildren()}
+                {this.makeChildren(this)}
             </form>
         )
-    }
-
-    isInputChild(child) {
-        return child.type === Input
     }
 
     getInputValue(name) {
@@ -68,14 +64,28 @@ export class Form extends React.Component {
             : null
     }
 
-    makeChildren() {
-        return React.Children.map(this.props.children, child => {
-            if(!this.isInputChild(child)) return child
+    makeChildren(parent) {
+        console.log('making for:', parent)
+        if(!parent.props) return null
 
-            return React.cloneElement(child, {
-                value: this.getInputValue(child.props.name),
-                onChange: c => this.onChildChange(c)
-            })
+        return React.Children.map(parent.props.children, child => {
+            console.log('child is:', child);
+            switch(child.type) {
+                case Input: return this.makeInput(child)
+                case 'div': return this.makeElement(child)
+                default: return child
+            }
+        })
+    }
+
+    makeElement(element) {
+        return React.cloneElement(element, {}, this.makeChildren(element))
+    }
+
+    makeInput(input) {
+        return React.cloneElement(input, {
+            value: this.getInputValue(input.props.name),
+            onChange: c => this.onChildChange(c)
         })
     }
 
@@ -98,6 +108,7 @@ export class Form extends React.Component {
 
     onSubmit(e) {
         e.preventDefault()
-        this.props.onSubmit && this.props.onSubmit(this.getDataPack())
+        if(this.hasValidInput())
+            this.props.onSubmit && this.props.onSubmit(this.getDataPack())
     }
 }
