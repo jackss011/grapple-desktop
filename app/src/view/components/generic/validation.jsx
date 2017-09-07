@@ -1,7 +1,5 @@
 import React from 'react'
 
-import {pick} from '~/model/utils'
-
 
 export class Submit extends React.Component {
     render() {
@@ -22,16 +20,17 @@ export class Input extends React.Component {
 
         this.state = {error: '', dirty: false}
         this.inputTag="input"
-        this.pickProps=[]
     }
 
     render() {
+        let {className, onChange, value, validator, ...nativeProps} = this.props
+
         const input = (
             <this.inputTag
                 className={visualError ? 'invalid' : ''}
                 value={this.props.value}
                 onChange={({target}) => this.onChange(target.name, target.value)}
-                {...pick(this.props, 'name', 'type', 'placeholder', ...this.pickProps)}
+                {...nativeProps}
             />
         )
 
@@ -64,7 +63,6 @@ export class TextArea extends Input {
         super(props)
 
         this.inputTag = 'textarea'
-        this.pickProps = ['cols', 'rows']
     }
 }
 
