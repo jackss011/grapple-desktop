@@ -161,8 +161,8 @@ export class Form extends React.Component {
 
     onSubmit(e) {
         e.preventDefault()
-        console.log(this.getDataPack());
-        // if(this.hasValidInput())
-        //     this.props.onSubmit && this.props.onSubmit(this.getDataPack())
+        //console.log(this.getDataPack());
+        if(this.hasValidInput())
+            this.props.onSubmit && this.props.onSubmit(this.getDataPack())
     }
 }
