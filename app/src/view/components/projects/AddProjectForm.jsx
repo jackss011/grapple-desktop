@@ -2,63 +2,37 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import ActionGenerator from '~/redux/actions/actions-generator'
+import {Form, Input, Submit, TextArea} from '../generic/validation'
+import Validate from '~/model/validators'
 
 
 class AddProjectForm extends React.Component {
     constructor(props) {
         super(props)
-
-        this.state = {
-            name: "",
-            description: ""
-        }
     }
 
     render() {
         return (
-            <form className="add-project-form" onSubmit={e => this.onSubmit(e)}>
-                <h1>Add new project</h1>
-                <input
-                    name="name"
-                    type="text"
-                    ref={input => this.nameInput = input}
-                    onChange={e => this.inputChange(e)}
-                    placeholder="Name"
-                />
-                <input
-                    name="description"
-                    type="text"
-                    ref={input => this.descriptionInput = input}
-                    onChange={e => this.inputChange(e)}
+            <Form
+                name="add-project"
+                className="add-project-form"
+                onSubmit={({name, description}) => this.props.onSubmit(name, description)} //TODO make project a single object
+            >
+                <h1>Add a project</h1>
+
+                <Input type="text" name="name" validator={Validate.projectName} placeholder="Name"/>
+
+                <TextArea name="description"
+                    cols="50" rows="10"
                     placeholder="Description"
                 />
 
                 <div className="buttons">
-                    <input type="submit" className="add" value="Add"/>
-                    <input type="button" className="cancel" value="Cancel" onClick={() => this.onCancel()}/>
+                    <Submit>Add</Submit>
+                    <button className="cancel" onClick={() => this.props.onCancel()}>Cancel</button>
                 </div>
-            </form>
+            </Form>
         )
-    }
-
-    inputChange({target}) {
-        this.setState({[target.name]: target.value})
-    }
-
-    onSubmit(event) {
-        event.preventDefault()
-        this.props.onSubmit(this.state.name, this.state.description) //TODO add validation
-        this.resetInputs()
-    }
-
-    onCancel() {
-        this.props.onCancel()
-        this.resetInputs()
-    }
-
-    resetInputs() {
-        this.nameInput.value = ""
-        this.descriptionInput.value = ""
     }
 }
 
