@@ -14,6 +14,7 @@ export class Submit extends React.Component {
 }
 
 
+
 export class Input extends React.Component {
     constructor(props) {
         super(props)
@@ -57,6 +58,8 @@ export class Input extends React.Component {
     }
 }
 
+
+
 export class TextArea extends Input {
     constructor(props) {
         super(props)
@@ -64,6 +67,7 @@ export class TextArea extends Input {
         this.inputTag = 'textarea'
     }
 }
+
 
 
 export class Form extends React.Component {
@@ -96,15 +100,18 @@ export class Form extends React.Component {
         if(!parent.props) return null
 
         return React.Children.map(parent.props.children, child => {
-            //console.log('child is:', child);
+            //console.log('child is:', child)
             switch(child.type) {
                 case Input:
                 case TextArea:
                     return this.makeInput(child)
+
                 case Submit:
                     return this.makeSubmit(child)
+
                 case 'div':
                     return this.makeElement(child)
+
                 default:
                     return child
             }
