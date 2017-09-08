@@ -24,6 +24,7 @@ export class Input extends React.Component {
 
     render() {
         let {className, onChange, value, validator, ...nativeProps} = this.props
+        let visualError = this.state.dirty && this.state.error
 
         const input = (
             <this.inputTag
@@ -36,12 +37,10 @@ export class Input extends React.Component {
 
         if(!this.props.validator) return input
 
-        let visualError = this.state.dirty && this.state.error
-
         return (
-            <div className="validator">
+            <div className="input-validation">
                 {input}
-                <div className="label">{visualError}</div>
+                <div className="error-label">{visualError}</div>
             </div>
         )
     }

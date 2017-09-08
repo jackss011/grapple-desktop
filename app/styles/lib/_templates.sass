@@ -29,10 +29,16 @@
     font-size: 0.95em
     display: block
 
+    &:focus
+        border-color: lighten($blue-select, 15)
+
     &.invalid
-        border-color: $red-cancel
+        border-color: lighten($red-cancel, 30)
         background-color: lighten($red-cancel, 45)
 
-    &:focus
-        border-color: $blue-select
+        &::-webkit-input-placeholder
+            color: lighten($red-cancel, 30)
+
+        &:focus
+            border-color: $red-cancel
 //
