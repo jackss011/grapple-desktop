@@ -1,6 +1,11 @@
 import React from 'react'
 
 
+/*React Submit component
+Renders an html input[type=submit]. It is disabled automatically if at least one
+input is not valid.
+Button text can be set as a child string. .i.e <Submit>Send the stuff!</Submit>
+*/
 export class Submit extends React.Component {
     render() {
         return (
@@ -15,6 +20,15 @@ export class Submit extends React.Component {
 
 
 
+/* React Input component
+props:
+    - validator: a validator function, if null or undefined the input is always valid
+    (every other prop despite value, onChange is passed to the html input)
+
+The validator function return a string if the input value is not valid.
+If the input is not valid and the value has been modified (is dirty) an error-label
+is displayed with the return value of the error function.
+*/
 export class Input extends React.Component {
     constructor(props) {
         super(props)
@@ -60,6 +74,9 @@ export class Input extends React.Component {
 
 
 
+/* React TextArea component
+(same of Input, just renders a different html tag)
+*/
 export class TextArea extends Input {
     constructor(props) {
         super(props)
@@ -70,6 +87,13 @@ export class TextArea extends Input {
 
 
 
+/* React Form component
+props
+    - onSubmit(datapack): callback fired when the user click the Submit component
+        - datapack: object, each entry is a pair name->value of an Input in the Form
+    - className (passed to html form)
+    - name (passed to html form)
+*/
 export class Form extends React.Component {
     constructor() {
         super()
