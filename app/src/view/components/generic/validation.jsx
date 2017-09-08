@@ -39,11 +39,11 @@ export class Input extends React.Component {
 
     render() {
         let {className, onChange, value, validator, ...nativeProps} = this.props
-        let visualError = this.state.dirty && this.state.error
+        let displayError = this.state.dirty && this.state.error
 
         const input = (
             <this.inputTag
-                className={visualError ? 'invalid' : ''}
+                className={displayError ? 'invalid' : ''}
                 value={this.props.value}
                 onChange={({target}) => this.onChange(target.name, target.value)}
                 {...nativeProps}
@@ -55,7 +55,7 @@ export class Input extends React.Component {
         return (
             <div className="input-validation">
                 {input}
-                <div className="error-label">{visualError}</div>
+                <div className="error-label">{displayError}</div>
             </div>
         )
     }
