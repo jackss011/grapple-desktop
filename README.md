@@ -1,11 +1,21 @@
-# Electron-React templete
+# Grapple-*desktop*
 
-### Provides
-- React JSX to JS
-- Packaging with electron-buidler
-- SASS to CSS
-- JQuery
+A dunno what i'm actually doing jff app.
 
-### Commands
-- `npm run pack`: create an executable folder or installer
-- `npm start`: test the application
+### Frameworks
+
+Framework | Purpose
+--- | ---
+Electron  | Desktop framework
+React | UI framework
+Redux | State management
+Gulp | Build toold
+
+
+### How to build
+
+##### 1. Install gulp
+Run `npm install gulp -g` in the terminal
+
+##### 2. Build the application files
+Run `gulp` in the terminal
