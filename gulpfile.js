@@ -4,6 +4,7 @@ const del = require('del')
 const sourcemaps = require('gulp-sourcemaps')
 const sass = require('gulp-sass')
 const babel = require('gulp-babel')
+const exec = require('child_process').exec
 
 gulp.task('clean', () => del(['build']))
 
@@ -28,4 +29,6 @@ gulp.task('copy-res', () =>
         .pipe(gulp.dest('build/app'))
 )
 
-gulp.task('default', ['copy-res', 'sass', 'babel'])
+gulp.task('build', ['copy-res', 'sass', 'babel'])
+
+gulp.task('run', ['build'], () => exec('electron .'))
