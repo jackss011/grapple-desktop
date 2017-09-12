@@ -59,6 +59,7 @@ gulp.task('nodemon', ['build'], () =>
     nodemon({
         exec: ['electron', '.'],
         watch: './app',
+        ext: 'js html',
         tasks: 'build'
     })
 )
