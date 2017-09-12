@@ -17,11 +17,13 @@ const context = {
 
 gulp.task('clean', () => del(['build']))
 
+
 gulp.task('html', () =>
     gulp.src('app/*.html')
         .pipe(preprocess({context}))
         .pipe(gulp.dest('build/app'))
 )
+
 
 gulp.task('sass', () =>
     gulp.src('app/styles/**/*.sass')
@@ -31,6 +33,7 @@ gulp.task('sass', () =>
         .pipe(gulp.dest('build/app/styles'))
 )
 
+
 gulp.task('babel', () =>
     gulp.src('app/**/*.+(js|jsx)')
         .pipe(sourcemaps.init())
@@ -39,14 +42,18 @@ gulp.task('babel', () =>
         .pipe(gulp.dest('build/app'))
 )
 
+
 gulp.task('copy-res', () =>
     gulp.src('app/**/*.+(png|ttf)')
         .pipe(gulp.dest('build/app'))
 )
 
+
 gulp.task('build', ['html', 'copy-res', 'sass', 'babel'])
 
+
 gulp.task('run', ['build'], () => exec('electron .'))
+
 
 gulp.task('nodemon', ['build'], () =>
     nodemon({
@@ -55,6 +62,7 @@ gulp.task('nodemon', ['build'], () =>
         tasks: 'build'
     })
 )
+
 
 gulp.task('style', ['run'], () =>
     gulp.watch('app/styles/**', ['sass'])
