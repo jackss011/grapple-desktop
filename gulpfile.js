@@ -5,6 +5,7 @@ const sourcemaps = require('gulp-sourcemaps')
 const sass = require('gulp-sass')
 const babel = require('gulp-babel')
 const exec = require('child_process').exec
+const nodemon = require('gulp-nodemon')
 
 gulp.task('clean', () => del(['build']))
 
@@ -32,3 +33,11 @@ gulp.task('copy-res', () =>
 gulp.task('build', ['copy-res', 'sass', 'babel'])
 
 gulp.task('run', ['build'], () => exec('electron .'))
+
+gulp.task('nodemon', ['build'], () =>
+    nodemon({
+        exec: ['electron', '.'],
+        watch: './app',
+        tasks: 'build'
+    })
+)

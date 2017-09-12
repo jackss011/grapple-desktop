@@ -36,6 +36,7 @@
         "grunt-contrib-sass": "^1.0.0",
         "gulp": "^3.9.1",
         "gulp-babel": "^7.0.0",
+        "gulp-nodemon": "^2.2.1",
         "gulp-sass": "^3.1.0",
         "gulp-sourcemaps": "^2.6.1",
         "nodemon": "^1.11.0"
