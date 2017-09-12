@@ -7,12 +7,19 @@ const babel = require('gulp-babel')
 const exec = require('child_process').exec
 const nodemon = require('gulp-nodemon')
 const preprocess = require('gulp-preprocess')
+const [,, task, ...args] = process.argv
+
+
+const context = {
+    WATCH_STYLES: task === 'watch-styles'
+}
+
 
 gulp.task('clean', () => del(['build']))
 
 gulp.task('html', () =>
     gulp.src('app/*.html')
-        .pipe(preprocess({context: {WATCH_STYLES: true}}))
+        .pipe(preprocess({context}))
         .pipe(gulp.dest('build/app'))
 )
 
