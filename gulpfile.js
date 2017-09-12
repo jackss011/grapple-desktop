@@ -11,7 +11,7 @@ const [,, task, ...args] = process.argv
 
 
 const context = {
-    WATCH_STYLES: task === 'watch-styles'
+    WATCH_STYLES: task === 'style'
 }
 
 
@@ -56,6 +56,6 @@ gulp.task('nodemon', ['build'], () =>
     })
 )
 
-gulp.task('watch-styles', ['run'], () =>
+gulp.task('style', ['run'], () =>
     gulp.watch('app/styles/**', ['sass'])
 )

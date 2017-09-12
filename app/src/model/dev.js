@@ -8,6 +8,7 @@ function reloadCss() {
 }
 
 module.exports = function cssWatcher(dir, pathTo) {
+    console.log('Listening css changes...')
     chokidar.watch(path.join(dir, pathTo), { ignoreInitial: true })
         .on('all', () => reloadCss())
 }
