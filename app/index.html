@@ -6,7 +6,11 @@
     </head>
     <body>
         <div id="root"></div>
+
+        <!-- @ifdef WATCH_STYLES -->
         <script>require('./src/model/dev')(__dirname, 'styles')</script>
+        <!-- @endif -->
+        
         <script>require('./src/view/main.js')</script>
     </body>
 </html>

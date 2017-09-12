@@ -6,8 +6,15 @@ const sass = require('gulp-sass')
 const babel = require('gulp-babel')
 const exec = require('child_process').exec
 const nodemon = require('gulp-nodemon')
+const preprocess = require('gulp-preprocess')
 
 gulp.task('clean', () => del(['build']))
+
+gulp.task('html', () =>
+    gulp.src('app/*.html')
+        .pipe(preprocess({context: {WATCH_STYLES: true}}))
+        .pipe(gulp.dest('build/app'))
+)
 
 gulp.task('sass', () =>
     gulp.src('app/styles/**/*.sass')
@@ -26,11 +33,11 @@ gulp.task('babel', () =>
 )
 
 gulp.task('copy-res', () =>
-    gulp.src('app/**/*.+(html|ttf)')
+    gulp.src('app/**/*.+(png|ttf)')
         .pipe(gulp.dest('build/app'))
 )
 
-gulp.task('build', ['copy-res', 'sass', 'babel'])
+gulp.task('build', ['html', 'copy-res', 'sass', 'babel'])
 
 gulp.task('run', ['build'], () => exec('electron .'))
 
@@ -40,4 +47,8 @@ gulp.task('nodemon', ['build'], () =>
         watch: './app',
         tasks: 'build'
     })
+)
+
+gulp.task('watch-styles', ['run'], () =>
+    gulp.watch('app/styles/**', ['sass'])
 )
