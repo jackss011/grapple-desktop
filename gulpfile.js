@@ -11,7 +11,7 @@ const [,, task, ...args] = process.argv
 
 
 const context = {
-    WATCH_STYLES: task === 'style' || task === 'watch',
+    RELOAD_STYLES: task === 'style' || task === 'watch',
     RELOAD_JS: task === 'code' || task === 'watch'
 }
 
