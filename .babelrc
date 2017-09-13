@@ -1,0 +1,12 @@
+{
+    "plugins": [
+        "transform-react-jsx",
+        [
+            "babel-plugin-root-import",
+            {
+                "rootPathSuffix": "app/src"
+            }
+        ]
+    ],
+    "presets": ["es2015", "stage-2"]
+}
