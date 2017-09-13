@@ -11,7 +11,8 @@ const [,, task, ...args] = process.argv
 
 
 const context = {
-    WATCH_STYLES: task === 'style'
+    WATCH_STYLES: task === 'style',
+    RELOAD_JS: task === 'code'
 }
 
 
@@ -36,6 +37,7 @@ gulp.task('sass', () =>
 
 gulp.task('babel', () =>
     gulp.src('app/**/*.+(js|jsx)')
+        .pipe(preprocess({context}))
         .pipe(sourcemaps.init())
         .pipe(babel())
         .pipe(sourcemaps.write('.'))
@@ -67,4 +69,9 @@ gulp.task('nodemon', ['build'], () =>
 
 gulp.task('style', ['run'], () =>
     gulp.watch('app/styles/**', ['sass'])
+)
+
+
+gulp.task('code', ['run'], () =>
+    gulp.watch('app/**', ['babel'])
 )

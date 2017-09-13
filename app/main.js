@@ -11,8 +11,10 @@ const url = require('url')
 const LocalStorage = require('./src/electron/local-storage')
 const storage = new LocalStorage()
 
-// try { require('electron-reload')(__dirname, {ignored: '**/store.json'}) }
-// catch(e) {console.log(e);}
+
+// @if RELOAD_JS
+require('electron-reload')(__dirname, {ignored: '**/store.json'})
+// @endif
 
 let mainWindow = null
 let loginWindow = null
