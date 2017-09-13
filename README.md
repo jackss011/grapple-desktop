@@ -36,12 +36,20 @@ or run `gulp run` to build **and run** the application.
 Builds application files in build subfolder.
 
 #### `gulp run`
-Runs `gulp build` and launchs the application through electron.
+Runs `gulp build` and launches the application through electron.
 
 #### `gulp nodemon`
-Runs `gulp run` and watchs for js or html changes to rebuild and
+Runs `gulp run` and watches for js or html changes to rebuild and
 restart the application.
 
 #### `gulp style`
-Runs `gulp run` and watchs for sass changes to refresh css only.
-The application state is preserved (i.e. the application is not restarted).
+Runs `gulp run` and watches for sass changes to refresh css only.
+The application state is preserved (i.e. the application is **not** restarted).
+
+Usefull to style application in real time.
+
+#### `gulp code`
+Runs `gulp run` and watches for javascript changes to refresh browser_window's
+content. Electron is **not** restarted.
+
+Usefull to edit browser content code (such as React, Redux).
