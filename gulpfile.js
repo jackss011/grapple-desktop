@@ -11,8 +11,8 @@ const [,, task, ...args] = process.argv
 
 
 const context = {
-    WATCH_STYLES: task === 'style',
-    RELOAD_JS: task === 'code'
+    WATCH_STYLES: task === 'style' || task === 'watch',
+    RELOAD_JS: task === 'code' || task === 'watch'
 }
 
 
@@ -75,3 +75,9 @@ gulp.task('style', ['run'], () =>
 gulp.task('code', ['run'], () =>
     gulp.watch('app/**', ['babel'])
 )
+
+
+gulp.task('watch', ['run'], () => {
+    gulp.watch(['app/**', '!**/*.sass'], ['babel'])
+    gulp.watch('app/styles/**', ['sass'])
+})

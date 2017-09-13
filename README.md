@@ -53,3 +53,14 @@ Runs `gulp run` and watches for javascript changes to refresh browser_window's
 content. Electron is **not** restarted.
 
 Usefull to edit browser content code (such as React, Redux).
+
+
+#### `gulp watch`
+Runs `gulp run` and watches both sass and js. Js and styles are reloaded
+independently. If source sass is updated only styles are refreshed
+(see `gulp style`), if source js is updated browser_window's content is
+refreshed (see `gulp code`).
+
+This task behaves like a combination of `gulp style` and `gulp code`.
+
+Usefull when to style and code at the same time.
