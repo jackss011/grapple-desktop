@@ -35,11 +35,18 @@ gulp.task('sass', () =>
 )
 
 
+function babelError({message, codeFrame}) {
+    console.log(message)
+    console.log(codeFrame)
+    this.emit('end')
+}
+
 gulp.task('babel', () =>
     gulp.src('app/**/*.+(js|jsx)')
         .pipe(preprocess({context}))
         .pipe(sourcemaps.init())
         .pipe(babel())
+        .on('error', babelError)
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('build/app'))
 )
