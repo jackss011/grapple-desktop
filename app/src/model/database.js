@@ -47,13 +47,13 @@ class Database {
             let newProject = firebase.database()
                 .ref(`users/${this.uid}/projects`).push()
 
-            newProject.set({
+            let promise = newProject.set({
                 name,
                 description,
                 timestamp: firebase.database.ServerValue.TIMESTAMP
             })
 
-            return newProject.key
+            return {uid: newProject.key, promise}
         }
     }
 
