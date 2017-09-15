@@ -9,6 +9,7 @@ import App from './components/App'
 import {createStore, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import {createLogger} from 'redux-logger'
+import thunk from 'redux-thunk'
 
 import reducer from '../redux/reducers/reducer'
 import ActionTypes from '../redux/actions/action-types'
@@ -37,7 +38,8 @@ const logger = createLogger({
 })
 
 const store = createStore(reducer, applyMiddleware(
-    accountMiddleware(account), 
+    thunk,
+    accountMiddleware(account),
     databaseMiddleware(database),
     storageMiddleware,
     logger

@@ -1,5 +1,7 @@
 import ActionTypes from './action-types'
 
+let projectSnackbarTimer = null
+
 const ActionsGenerator = {
     // MISC
     initialize: () => ({type: ActionTypes.INITIALIZE}),
@@ -30,10 +32,17 @@ const ActionsGenerator = {
         name, description
     }),
 
-    submitProjectResult: (uid, success) => ({
-        type: ActionTypes.SUBMIT_PROJECT_RESULT,
-        uid, success
-    }),
+    submitProjectResult: (uid, success) => dispatch => {
+        projectSnackbarTimer = setTimeout(
+            () => dispatch(ActionsGenerator.hideProjectSnackbar()),
+            3000
+        )
+
+        dispatch({
+            type: ActionTypes.SUBMIT_PROJECT_RESULT,
+            uid, success
+        })
+    },
 
 
     deleteProjectConfirm: (confirmed, uid) => ({
@@ -60,6 +69,9 @@ const ActionsGenerator = {
     showProjectSelection: () => ({ type: ActionTypes.SHOW_PROJECT_SELECTION }),
 
     hideProjectSelection: () => ({ type: ActionTypes.HIDE_PROJECT_SELECTION }),
+
+
+    hideProjectSnackbar: () => ({ type: ActionTypes.HIDE_PROJECT_SNACKBAR })
 }
 
 export default ActionsGenerator
