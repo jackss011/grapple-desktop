@@ -53,6 +53,15 @@ const ActionsGenerator = {
         uid
     }),
 
+    deleteProjectResult: (project, success) => dispatch => {
+        projectSnackbarTimer.set(() => dispatch(ActionsGenerator.hideProjectSnackbar()), 3000)
+
+        dispatch({
+            type: ActionTypes.DELETE_PROJECT_RESULT,
+            project, success
+        })
+    },
+
 
     onProjects: projects => ({
         type: ActionTypes.ON_PROJECTS,

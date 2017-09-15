@@ -24,23 +24,35 @@ class ProjectsPane extends React.Component {
         )
     }
 
-    renderSnackbar() {
+    renderSnackbar() { //TODO check id successful + pass add project to snackbar state isntead od if
         const snackbar = this.props.snackbar
         const projects = this.props.projects
         if(!snackbar) return null
 
+        let projectName = null
+        let action = null
+
         switch(snackbar.type) {
             case 'add':
-                return (
-                    <Snackbar>
-                        Project &nbsp;
-                        <strong>{projects[snackbar.uid].name}</strong>
-                        &nbsp; added!
-                    </Snackbar>
-                )
+                projectName = projects[snackbar.uid].name
+                action = 'added'
+                break
+
+            case 'delete':
+                projectName = snackbar.project.name
+                action = 'deleted'
+                break
 
             default: return null
         }
+
+        return (
+            <Snackbar type={snackbar.type}>
+                Project &nbsp;
+                <strong>{projectName}</strong>
+                &nbsp; {action}!
+            </Snackbar>
+        )
     }
 }
 

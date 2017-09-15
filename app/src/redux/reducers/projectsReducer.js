@@ -35,8 +35,8 @@ export default function(state = initState, action) {
             return Object.assign({}, state, {adding: false})
 
         case ActionTypes.SUBMIT_PROJECT_RESULT:
-            let snackbar = {type: 'add', uid: action.uid, success: action.success}
-            return Object.assign({}, state, {snackbar})
+            let snackbarSub = {type: 'add', uid: action.uid, success: action.success}
+            return Object.assign({}, state, {snackbar: snackbarSub})
 
 
         case ActionTypes.DELETE_PROJECT:
@@ -44,6 +44,10 @@ export default function(state = initState, action) {
 
         case ActionTypes.DELETE_PROJECT_CONFIRM:
             return Object.assign({}, state, {deleting: null})
+
+        case ActionTypes.DELETE_PROJECT_RESULT:
+            let snackbarDel = {type: 'delete', project: action.project, success: action.success}
+            return Object.assign({}, state, {snackbar: snackbarDel})
 
 
         case ActionTypes.SELECT_PROJECT:
