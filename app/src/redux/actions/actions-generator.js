@@ -1,6 +1,7 @@
 import ActionTypes from './action-types'
+import {Timer} from '~/model/utils'
 
-let projectSnackbarTimer = null
+let projectSnackbarTimer = new Timer()
 
 const ActionsGenerator = {
     // MISC
@@ -33,10 +34,7 @@ const ActionsGenerator = {
     }),
 
     submitProjectResult: (uid, success) => dispatch => {
-        clearTimeout(projectSnackbarTimer)
-
-        projectSnackbarTimer = setTimeout(() =>
-            dispatch(ActionsGenerator.hideProjectSnackbar()), 3000)
+        projectSnackbarTimer.set(() => dispatch(ActionsGenerator.hideProjectSnackbar()), 3000)
 
         dispatch({
             type: ActionTypes.SUBMIT_PROJECT_RESULT,
@@ -72,8 +70,7 @@ const ActionsGenerator = {
 
 
     hideProjectSnackbar: () => {
-        clearTimeout(projectSnackbarTimer)
-        projectSnackbarTimer = null
+        projectSnackbarTimer.clear()
         return { type: ActionTypes.HIDE_PROJECT_SNACKBAR }
     }
 }
