@@ -33,10 +33,10 @@ const ActionsGenerator = {
     }),
 
     submitProjectResult: (uid, success) => dispatch => {
-        projectSnackbarTimer = setTimeout(
-            () => dispatch(ActionsGenerator.hideProjectSnackbar()),
-            3000
-        )
+        clearTimeout(projectSnackbarTimer)
+
+        projectSnackbarTimer = setTimeout(() =>
+            dispatch(ActionsGenerator.hideProjectSnackbar()), 3000)
 
         dispatch({
             type: ActionTypes.SUBMIT_PROJECT_RESULT,
@@ -71,7 +71,11 @@ const ActionsGenerator = {
     hideProjectSelection: () => ({ type: ActionTypes.HIDE_PROJECT_SELECTION }),
 
 
-    hideProjectSnackbar: () => ({ type: ActionTypes.HIDE_PROJECT_SNACKBAR })
+    hideProjectSnackbar: () => {
+        clearTimeout(projectSnackbarTimer)
+        projectSnackbarTimer = null
+        return { type: ActionTypes.HIDE_PROJECT_SNACKBAR }
+    }
 }
 
 export default ActionsGenerator
