@@ -1,11 +1,12 @@
 import ActionTypes from '../actions/action-types'
 
 const initState = {
-    adding: false,
     initial_loading: true,
     selected: null,
     is_selecting: false,
-    deleting: null
+    adding: false,
+    deleting: null,
+    snackbar: null,
 }
 
 export default function(state = initState, action) {
@@ -33,13 +34,17 @@ export default function(state = initState, action) {
         case ActionTypes.SUBMIT_PROJECT:
             return Object.assign({}, state, {adding: false})
 
+        case ActionTypes.SUBMIT_PROJECT_RESULT:
+            let snackbar = {type: 'add', uid: action.uid, success: action.success}
+            return Object.assign({}, state, {snackbar})
+
 
         case ActionTypes.DELETE_PROJECT:
             return Object.assign({}, state, {deleting: action.uid})
 
         case ActionTypes.DELETE_PROJECT_CONFIRM:
             return Object.assign({}, state, {deleting: null})
-            
+
 
         case ActionTypes.SELECT_PROJECT:
             return Object.assign({}, state, {selected: action.uid, is_selecting: false})

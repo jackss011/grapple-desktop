@@ -17,13 +17,21 @@ export default database => {
                     break
 
                 case ActionTypes.SUBMIT_PROJECT:
-                    let uid = database.submitProject(action.name, action.description)
+                    let {uid, promise} = database.submitProject(action.name, action.description)
+                    promise.then(
+                        () => dispatch(ActionsGenerator.submitProjectResult(uid, true)),
+                        () => {}
+                    )
                     dispatch(ActionsGenerator.selectProject(uid))
                     break
 
                 case ActionTypes.DELETE_PROJECT_CONFIRM:
-                    if(action.confirmed)
-                        database.deleteProject(action.uid)
+                    if(action.confirmed) {
+                        database.deleteProject(action.uid).then(
+                            () => {},
+                            () => {}
+                        )
+                    }
                     break
             }
 

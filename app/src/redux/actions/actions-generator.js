@@ -30,6 +30,11 @@ const ActionsGenerator = {
         name, description
     }),
 
+    submitProjectResult: (uid, success) => ({
+        type: ActionTypes.SUBMIT_PROJECT_RESULT,
+        uid, success
+    }),
+
 
     deleteProjectConfirm: (confirmed, uid) => ({
         type: ActionTypes.DELETE_PROJECT_CONFIRM,
