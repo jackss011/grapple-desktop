@@ -36,3 +36,17 @@
     font-size: 0.8rem
     color: lighten($red-cancel, 15)
 //
+
+
+.snackbar
+    +flex-row(space-between, center)
+    flex-shrink: 0
+    padding: 6px 14px
+    background-color: $green-add-light
+
+    .content
+        color: white
+
+    .close
+        +sneaky-button(red)
+//
