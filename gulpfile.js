@@ -20,7 +20,7 @@ gulp.task('clean', () => del(['build']))
 
 
 gulp.task('html', () =>
-    gulp.src('app/*.html')
+    gulp.src('app/**/*.html')
         .pipe(preprocess({context}))
         .pipe(gulp.dest('build/app'))
 )
