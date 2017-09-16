@@ -19,8 +19,14 @@ export default database => {
                 case ActionTypes.SUBMIT_PROJECT:
                     let {uid, promise} = database.submitProject(action.name, action.description)
                     promise.then(
-                        () => dispatch(ActionsGenerator.submitProjectResult(uid, true)),
-                        () => dispatch(ActionsGenerator.submitProjectResult(uid, false))
+                        () => {
+                            let project = getState().projects.list[uid]
+                            dispatch(ActionsGenerator.submitProjectResult(project, true))
+                        },
+                        () => {
+                            let project = {name: action.name}
+                            dispatch(ActionsGenerator.submitProjectResult(project, false))
+                        }
                     )
                     dispatch(ActionsGenerator.selectProject(uid))
                     break

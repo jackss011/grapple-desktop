@@ -33,12 +33,12 @@ const ActionsGenerator = {
         name, description
     }),
 
-    submitProjectResult: (uid, success) => dispatch => {
+    submitProjectResult: (project, success) => dispatch => {
         projectSnackbarTimer.set(() => dispatch(ActionsGenerator.hideProjectSnackbar()), 3000)
 
         dispatch({
             type: ActionTypes.SUBMIT_PROJECT_RESULT,
-            uid, success
+            project, success
         })
     },
 

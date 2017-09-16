@@ -35,7 +35,7 @@ export default function(state = initState, action) {
             return Object.assign({}, state, {adding: false})
 
         case ActionTypes.SUBMIT_PROJECT_RESULT:
-            let snackbarSub = {type: 'add', uid: action.uid, success: action.success}
+            let snackbarSub = {type: 'add', project: action.project, success: action.success}
             return Object.assign({}, state, {snackbar: snackbarSub})
 
 
