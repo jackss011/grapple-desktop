@@ -64,6 +64,8 @@ export default function(state = initState, action) {
         case ActionTypes.AUTH_STATE_CHANGED:
             if(action.userInfo == null)
                 return initState
+            else
+                return state
 
         case ActionTypes.HIDE_PROJECT_SNACKBAR:
             return Object.assign({}, state, {snackbar: null})
