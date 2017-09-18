@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import ProjectsBottom from './ProjectsBottom'
 import ProjectList from './list/ProjectList'
 import ProjectDetails from './details/ProjectDetails'
+import Snackbar from '../generic/Snackbar'
 
 
 class ProjectsPane extends React.Component {
@@ -17,9 +18,44 @@ class ProjectsPane extends React.Component {
                         && <ProjectList/>
                     }
                 </div>
+                {this.renderSnackbar()}
                 <ProjectsBottom/>
             </div>
         )
+    }
+
+    renderSnackbar() {
+        const snackbar = this.props.snackbar
+        if(!snackbar) return null
+
+        let name =<strong>&nbsp;{snackbar.project.name}&nbsp;</strong>
+        let className = snackbar.type + ' ' + (snackbar.success ? '' : 'failed')
+
+        switch(snackbar.type) {
+            case 'add':
+                return (
+                    <Snackbar className={className}>
+                        {snackbar.success
+                            ? ['Project', name, 'added!']
+                            : ['Failed to add project', name]
+                        }
+                    </Snackbar>
+                )
+                break
+
+            case 'delete':
+                return (
+                    <Snackbar className={className}>
+                        {snackbar.success
+                            ? ['Project', name, 'deleted!']
+                            : ['Failed to delete project', name]
+                        }
+                    </Snackbar>
+                )
+            break
+
+            default: return null
+        }
     }
 }
 
@@ -27,7 +63,8 @@ class ProjectsPane extends React.Component {
 function mapStateToProps({projects}) {
     return {
         hasSelected: projects.selected != null,
-        isSelecting: projects.is_selecting
+        isSelecting: projects.is_selecting,
+        snackbar: projects.snackbar,
     }
 }
 

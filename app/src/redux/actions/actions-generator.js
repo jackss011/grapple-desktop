@@ -1,4 +1,7 @@
 import ActionTypes from './action-types'
+import {Timer} from '~/model/utils'
+
+let projectSnackbarTimer = new Timer()
 
 const ActionsGenerator = {
     // MISC
@@ -30,6 +33,15 @@ const ActionsGenerator = {
         name, description
     }),
 
+    submitProjectResult: (project, success) => dispatch => {
+        projectSnackbarTimer.set(() => dispatch(ActionsGenerator.hideProjectSnackbar()), 3000)
+
+        dispatch({
+            type: ActionTypes.SUBMIT_PROJECT_RESULT,
+            project, success
+        })
+    },
+
 
     deleteProjectConfirm: (confirmed, uid) => ({
         type: ActionTypes.DELETE_PROJECT_CONFIRM,
@@ -40,6 +52,15 @@ const ActionsGenerator = {
         type: ActionTypes.DELETE_PROJECT,
         uid
     }),
+
+    deleteProjectResult: (project, success) => dispatch => {
+        projectSnackbarTimer.set(() => dispatch(ActionsGenerator.hideProjectSnackbar()), 3000)
+
+        dispatch({
+            type: ActionTypes.DELETE_PROJECT_RESULT,
+            project, success
+        })
+    },
 
 
     onProjects: projects => ({
@@ -55,6 +76,12 @@ const ActionsGenerator = {
     showProjectSelection: () => ({ type: ActionTypes.SHOW_PROJECT_SELECTION }),
 
     hideProjectSelection: () => ({ type: ActionTypes.HIDE_PROJECT_SELECTION }),
+
+
+    hideProjectSnackbar: () => {
+        projectSnackbarTimer.clear()
+        return { type: ActionTypes.HIDE_PROJECT_SNACKBAR }
+    }
 }
 
 export default ActionsGenerator

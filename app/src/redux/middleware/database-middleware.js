@@ -3,7 +3,7 @@ import ActionTypes from '../actions/action-types'
 
 
 export default database => {
-    return ({dispatch}) => {
+    return ({dispatch, getState}) => {
 
         database.onProjects = projects =>
             dispatch(ActionsGenerator.onProjects(projects))
@@ -17,13 +17,29 @@ export default database => {
                     break
 
                 case ActionTypes.SUBMIT_PROJECT:
-                    let uid = database.submitProject(action.name, action.description)
+                    let {uid, promise} = database.submitProject(action.name, action.description)
+                    promise.then(
+                        () => {
+                            let project = getState().projects.list[uid]
+                            dispatch(ActionsGenerator.submitProjectResult(project, true))
+                        },
+                        () => {
+                            let project = {name: action.name} //TODO fix this
+                            dispatch(ActionsGenerator.submitProjectResult(project, false))
+                        }
+                    )
                     dispatch(ActionsGenerator.selectProject(uid))
                     break
 
                 case ActionTypes.DELETE_PROJECT_CONFIRM:
-                    if(action.confirmed)
-                        database.deleteProject(action.uid)
+                    if(action.confirmed) {
+                        let project = getState().projects.list[action.uid] //TODO check if exists
+
+                        database.deleteProject(action.uid).then(
+                            () => dispatch(ActionsGenerator.deleteProjectResult(project, true)),
+                            () => dispatch(ActionsGenerator.deleteProjectResult(project, false))
+                        )
+                    }
                     break
             }
 

@@ -59,13 +59,13 @@
     //
 
     .name
-        color: #333
+        color: $text-normal
         font-size: 1em
         margin-bottom: 5px
     //
 
     .description
-        color: #aaa
+        color: $text-minor
         font-size: 0.8em
     //
 
@@ -89,7 +89,7 @@
 
 .project-spinner
     +flex(flex-start, center)
-    color: #888
+    color: $text-minor
 
     .animated-spinner
         +animated-spinner()
@@ -141,6 +141,7 @@
 
 .project-details
     +flex-row(space-between)
+    flex-shrink: 0
     padding: 13px 15px
     background-color: white
 
@@ -158,7 +159,7 @@
         //
 
         .description
-            color: #444
+            color: $text-normal
         //
     //
 

@@ -9,7 +9,6 @@
     border-right: none
     border-left: none
 
-
     .animated-spinner
         margin-right: 22px
         +animated-spinner(30px)
@@ -20,13 +19,13 @@
 
     .init-label
         font-size: 23px
-//
+// TODO style this
 
 
 .missing-label
     align-self: stretch
     margin: auto
-    color: #999
+    color: $text-aside
     font-size: 0.95rem
 //
 
@@ -35,4 +34,17 @@
     margin-top: 2px
     font-size: 0.8rem
     color: lighten($red-cancel, 15)
+//
+
+
+.snackbar
+    +flex-row(space-between, center)
+    flex-shrink: 0
+    padding: 6px 14px
+    background-color: $back-overlay
+    border-top: $border-base
+
+    color: $text-success
+    &.failed
+        color: $text-error
 //

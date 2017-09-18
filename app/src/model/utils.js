@@ -44,3 +44,26 @@ export function formatTime(time) {
 export function pick(o, ...props) {
     return Object.assign({}, ...props.map(prop => ({[prop]: o[prop]})));
 }
+
+
+export class Timer {
+    constructor() {
+        this.timer = null
+        this.clear = this.clear.bind(this)
+        this.set = this.set.bind(this)
+    }
+
+    set(exec, time) {
+        this.clear()
+
+        this.timer = setTimeout(() => {
+            exec()
+            this.timer = null
+        }, time)
+    }
+
+    clear() {
+        clearTimeout(this.timer)
+        this.timer = null
+    }
+}

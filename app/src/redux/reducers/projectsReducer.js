@@ -1,11 +1,12 @@
 import ActionTypes from '../actions/action-types'
 
 const initState = {
-    adding: false,
     initial_loading: true,
     selected: null,
     is_selecting: false,
-    deleting: null
+    adding: false,
+    deleting: null,
+    snackbar: null,
 }
 
 export default function(state = initState, action) {
@@ -33,13 +34,21 @@ export default function(state = initState, action) {
         case ActionTypes.SUBMIT_PROJECT:
             return Object.assign({}, state, {adding: false})
 
+        case ActionTypes.SUBMIT_PROJECT_RESULT:
+            let snackbarSub = {type: 'add', project: action.project, success: action.success}
+            return Object.assign({}, state, {snackbar: snackbarSub})
+
 
         case ActionTypes.DELETE_PROJECT:
             return Object.assign({}, state, {deleting: action.uid})
 
         case ActionTypes.DELETE_PROJECT_CONFIRM:
             return Object.assign({}, state, {deleting: null})
-            
+
+        case ActionTypes.DELETE_PROJECT_RESULT:
+            let snackbarDel = {type: 'delete', project: action.project, success: action.success}
+            return Object.assign({}, state, {snackbar: snackbarDel})
+
 
         case ActionTypes.SELECT_PROJECT:
             return Object.assign({}, state, {selected: action.uid, is_selecting: false})
@@ -51,9 +60,15 @@ export default function(state = initState, action) {
         case ActionTypes.HIDE_PROJECT_SELECTION:
             return Object.assign({}, state, {is_selecting: false})
 
+
         case ActionTypes.AUTH_STATE_CHANGED:
             if(action.userInfo == null)
                 return initState
+            else
+                return state
+
+        case ActionTypes.HIDE_PROJECT_SNACKBAR:
+            return Object.assign({}, state, {snackbar: null})
 
         default:
             return state
