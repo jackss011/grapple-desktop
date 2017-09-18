@@ -29,7 +29,7 @@ class ProjectsPane extends React.Component {
         if(!snackbar) return null
 
         let name =<strong>&nbsp;{snackbar.project.name}&nbsp;</strong>
-        let className = snackbar.type + ' ' + !snackbar.success ? 'failed' : ''
+        let className = snackbar.type + ' ' + (snackbar.success ? '' : 'failed')
 
         switch(snackbar.type) {
             case 'add':
