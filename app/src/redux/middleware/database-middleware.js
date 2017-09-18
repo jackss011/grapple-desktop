@@ -24,7 +24,7 @@ export default database => {
                             dispatch(ActionsGenerator.submitProjectResult(project, true))
                         },
                         () => {
-                            let project = {name: action.name}
+                            let project = {name: action.name} //TODO fix this
                             dispatch(ActionsGenerator.submitProjectResult(project, false))
                         }
                     )
